@@ -185,6 +185,7 @@
 <li><a href="#creating-a-github-app">Creating a GitHub App</a></li>
 <li><a href="#creating-a-database">Creating a Database</a></li>
 <li><a href="#reviewing-environment-variables">Reviewing the Environment Variables</a></li>
+<li><a href="#deploy-container">Deploy container</a></li>
 </ul>
 <p>The goal is to create a set of environment variables that look like this:</p>
 <pre><code class="language-bash">BASE_URL="https://gitnotebooks.mycompany.com"
@@ -286,6 +287,31 @@ DATABASE_URL='postgresql://postgres:somepassword@git-notebooks.database.url.rds.
 AES_ENCRYPTION_KEY="X9CSf8y7Pw9dYSJNUwV4L7jUqH42/Mb27pHBRTUWceI="
 </code></pre>
 <p>You are now ready to deploy GitNotebooks Self Hosted.</p>
+<h2 id="deploy-container"><a class="header" href="#deploy-container">Deploying a container</a></h2>
+<p>The final step is to deploy the GitNotebooks container image with these environment variables. Whle GitNotebooks Self Hosted will not make any network requests apart from GitHub, we recommend the following security settings:</p>
+<ul>
+<li>Web application servers
+<ul>
+<li>Container environment variables stored as secrets (e.g. AWS Secrets Manager)</li>
+<li>Outbound network traffic restrictred to GitHub and Database</li>
+<li>Inbound traffic restricted to corpotate VPN</li>
+</ul>
+</li>
+<li>Database
+<ul>
+<li>Encrypted at rest</li>
+<li>Require SSL connections from web server</li>
+<li>Inbound restricted to web servers via TCP port 5432</li>
+<li>No outbound network requests</li>
+</ul>
+</li>
+<li>Application load balancer
+<ul>
+<li>Restrict inbound requests to coroporate VPN and GitHub Webhooks</li>
+<li>Restrict outbound requests to web application</li>
+</ul>
+</li>
+</ul>
 
                     </main>
 
