@@ -1,0 +1,13 @@
+[book]
+authors = ["Kyle Smith"]
+language = "en"
+multilingual = false
+src = "docs"
+title = "GitNotebooks Docs"
+
+[build]
+build-dir = "book"
+create-missing = false
+
+[output.html]
+git-repository-url = "https://github.com/GitNotebooks/GitNotebooks"
