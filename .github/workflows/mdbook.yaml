@@ -2,7 +2,7 @@ name: Generate Book and Publish to GitHub Pages
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   ebook:
     name: Build and upload
