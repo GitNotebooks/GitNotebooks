@@ -11,8 +11,6 @@ The tutorial is divided into several sections:
 - [Creating a Database](#creating-a-database)
 - [Reviewing the Environment Variables](#reviewing-environment-variables)
 
-### Notation
-
 The goal is to create a set of environment variables that look like this:
 
 ```bash
