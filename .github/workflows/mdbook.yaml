@@ -16,7 +16,7 @@ jobs:
         run: bin/build
 
       - name: Add CNAM file
-        run: echo "docs.gitnotebooks.com" >> CNAME
+        run: echo "docs.gitnotebooks.com" >> ./book/CNAME
 
       # HTML publication as Github Page
       - name: Publish HTML
