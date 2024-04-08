@@ -10,6 +10,7 @@ The tutorial is divided into several sections:
 - [Creating a GitHub App](#creating-a-github-app)
 - [Creating a Database](#creating-a-database)
 - [Reviewing the Environment Variables](#reviewing-environment-variables)
+- [Deploy container](#deploy-container)
 
 The goal is to create a set of environment variables that look like this:
 
@@ -142,3 +143,20 @@ AES_ENCRYPTION_KEY="X9CSf8y7Pw9dYSJNUwV4L7jUqH42/Mb27pHBRTUWceI="
 ```
 
 You are now ready to deploy GitNotebooks Self Hosted.
+
+## Deploying a container { #deploy-container }
+
+The final step is to deploy the GitNotebooks container image with these environment variables. Whle GitNotebooks Self Hosted will not make any network requests apart from GitHub, we recommend the following security settings:
+
+- Web application servers
+  - Container environment variables stored as secrets (e.g. AWS Secrets Manager)
+  - Outbound network traffic restrictred to GitHub and Database
+  - Inbound traffic restricted to corpotate VPN
+- Database
+  - Encrypted at rest
+  - Require SSL connections from web server
+  - Inbound restricted to web servers via TCP port 5432
+  - No outbound network requests
+- Application load balancer
+  - Restrict inbound requests to coroporate VPN and GitHub Webhooks
+  - Restrict outbound requests to web application
