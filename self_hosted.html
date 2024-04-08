@@ -1,40 +1,27 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Self Hosted - GitNotebooks Docs</title>
-        
-        
 
 
         <!-- Custom HTML head -->
         
-
-
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
-        
         <link rel="icon" href="favicon.svg">
-        
-        
         <link rel="shortcut icon" href="favicon.png">
-        
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
-        
         <link rel="stylesheet" href="css/print.css" media="print">
-        
 
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
@@ -42,19 +29,18 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
 
-        
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -70,83 +56,107 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
 
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
                 <ol class="chapter"><li class="chapter-item expanded "><a href="self_hosted.html" class="active"><strong aria-hidden="true">1.</strong> Self Hosted</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">GitNotebooks Docs</h1>
 
                     <div class="right-buttons">
-                        
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
-                        
                         <a href="https://github.com/GitNotebooks/GitNotebooks" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -154,10 +164,9 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -167,9 +176,9 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#self-hosted" id="self-hosted">Self Hosted</a></h1>
+                        <h1 id="self-hosted"><a class="header" href="#self-hosted">Self Hosted</a></h1>
 <p><em>This tutorial shows how to deploy self-hosted GitNotebooks to a GitHub Enterprise account</em></p>
-<h3><a class="header" href="#before-we-start-the-tutorial" id="before-we-start-the-tutorial">Before we start the tutorial</a></h3>
+<h3 id="before-we-start-the-tutorial"><a class="header" href="#before-we-start-the-tutorial">Before we start the tutorial</a></h3>
 <p>The tutorial is divided into several sections:</p>
 <ul>
 <li><a href="#choosing-an-endpoint">Choosing an Endpoint</a></li>
@@ -177,29 +186,29 @@
 <li><a href="#creating-a-database">Creating a Database</a></li>
 <li><a href="#reviewing-environment-variables">Reviewing the Environment Variables</a></li>
 </ul>
-<h3><a class="header" href="#notation" id="notation">Notation</a></h3>
+<h3 id="notation"><a class="header" href="#notation">Notation</a></h3>
 <p>The goal is to create a set of environment variables that look like this:</p>
-<pre><code class="language-bash">BASE_URL=&quot;https://gitnotebooks.mycompany.com&quot;
-GITHUB_BASE_URL=&quot;https://github.mycompany.com&quot;
-GITHUB_APP_IDENTIFIER=&quot;499732&quot;
-GITHUB_CLIENT_ID=&quot;Iv1.9a814f3c682c9a36&quot;
-GITHUB_CLIENT_SECRET=&quot;0f2e9190d598624847d2b259b5b567cf981d5072&quot;
-GITHUB_PRIVATE_KEY=&quot;LS0tLS12dJQkFNB2s3emt2dBS0nRzbXQzVCRUdJUUVBc2pzNFRSb0ErUVdWdMbFZUeklyQmtkYkZFURSBTXZiZnlqQW9FHU0EgUFJJVk1YWZWUGxaV1NOKUTiBSbNi9HOUTV0YLRVktLS0tLQpCg==&quot;
-GITHUB_WEBHOOK_SECRET=&quot;d1ae70aaf90bd909ce44927350d9aba8c1136d34&quot;
-GITHUB_APP_URL=&quot;https://github.mycompany.com/apps/gitnotebooks-self-hosted&quot;
+<pre><code class="language-bash">BASE_URL="https://gitnotebooks.mycompany.com"
+GITHUB_BASE_URL="https://github.mycompany.com"
+GITHUB_APP_IDENTIFIER="499732"
+GITHUB_CLIENT_ID="Iv1.9a814f3c682c9a36"
+GITHUB_CLIENT_SECRET="0f2e9190d598624847d2b259b5b567cf981d5072"
+GITHUB_PRIVATE_KEY="LS0tLS12dJQkFNB2s3emt2dBS0nRzbXQzVCRUdJUUVBc2pzNFRSb0ErUVdWdMbFZUeklyQmtkYkZFURSBTXZiZnlqQW9FHU0EgUFJJVk1YWZWUGxaV1NOKUTiBSbNi9HOUTV0YLRVktLS0tLQpCg=="
+GITHUB_WEBHOOK_SECRET="d1ae70aaf90bd909ce44927350d9aba8c1136d34"
+GITHUB_APP_URL="https://github.mycompany.com/apps/gitnotebooks-self-hosted"
 DATABASE_URL='postgresql://postgres:somepassword@git-notebooks.database.url.rds.amazonaws.com:5432/postgres'
-AES_ENCRYPTION_KEY=&quot;X9CSf8y7Pw9dYSJNUwV4L7jUqH42/Mb27pHBRTUWceI=&quot;
+AES_ENCRYPTION_KEY="X9CSf8y7Pw9dYSJNUwV4L7jUqH42/Mb27pHBRTUWceI="
 </code></pre>
 <p>In this tutorial, we’ll note an environment variables with this notation: <code>SOME_ENV_VAR</code></p>
-<h3><a class="header" href="#prerequisites" id="prerequisites">Prerequisites</a></h3>
+<h3 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h3>
 <p>We’ll assume that you have enough permission to create a new GitHub app and a Postgres database. We’ll also assume that you have access to the private GitNotebooks container image.</p>
 <p>If you have not yet received the GitNotebooks container image, you can do so by filling out this form: <a href="https://form.typeform.com/to/pjV6jHKr">Self-hosted signup</a></p>
-<h2><a class="header" href="#choosing-an-endpoint--choosing-an-endpoint-" id="choosing-an-endpoint--choosing-an-endpoint-">Choosing an Endpoint { #choosing-an-endpoint }</a></h2>
+<h2 id="choosing-an-endpoint"><a class="header" href="#choosing-an-endpoint">Choosing an Endpoint</a></h2>
 <p>Whether you’re hosting this service at a URL like <code>gitnotebooks.yourcompanydomain.com</code>, or a private IP address, it’s helpful to decide what the endpoint will be up front. We will refer to this URL as the <code>BASE_URL</code>.</p>
 <pre><code class="language-bash"># Example base URL
-BASE_URL=&quot;https://gitnotebooks.yourcompanydomain.com&quot;
+BASE_URL="https://gitnotebooks.yourcompanydomain.com"
 </code></pre>
-<h2><a class="header" href="#creating-a-github-app--creating-a-github-app-" id="creating-a-github-app--creating-a-github-app-">Creating a GitHub App { #creating-a-github-app }</a></h2>
+<h2 id="creating-a-github-app"><a class="header" href="#creating-a-github-app">Creating a GitHub App</a></h2>
 <p>First, click <strong>New GitHub App</strong>. If you need help finding this button, the GitHub docs can help: <a href="https://docs.github.com/en/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/registering-a-github-app">Registering a GitHub App</a>
 Here’s how to fill out the form:</p>
 <img alt="register GitNotebooks GitHub App 1" src="images/gh-app-1.png" width="500px" />
@@ -228,7 +237,7 @@ Here’s how to fill out the form:</p>
 </ul>
 </li>
 </ul>
-<h3><a class="header" href="#after-creating-the-github-app" id="after-creating-the-github-app">After creating the GitHub App</a></h3>
+<h3 id="after-creating-the-github-app"><a class="header" href="#after-creating-the-github-app">After creating the GitHub App</a></h3>
 <p>We'll need to collect some information for GitNotebooks to identify itself as the GitHub App.</p>
 <p><strong>Generate a new client secret <code>GITHUB_CLIENT_SECRET</code></strong></p>
 <img alt="generate client secret" src="images/gh-app-client-secrets.png" width="300px" />
@@ -241,9 +250,9 @@ We will download the key, then convert it to base64.</p>
 <p><strong>Note the url of the public page <code>GITHUB_APP_URL</code></strong></p>
 <p>This URL is used to direct users to add repos to the GitHub app installation.</p>
 <img src="images/public-url.png" alt="public url link for GitHub App" width="200"/>
-<h3><a class="header" href="#making-it-pretty-optional" id="making-it-pretty-optional">Making it pretty (optional)</a></h3>
+<h3 id="making-it-pretty-optional"><a class="header" href="#making-it-pretty-optional">Making it pretty (optional)</a></h3>
 <p>Finally, you can upload a <a href="images/logo.png">logo</a> which is used as the app's avatar.</p>
-<h2><a class="header" href="#creating-a-database--creating-a-database-" id="creating-a-database--creating-a-database-">Creating a database { #creating-a-database }</a></h2>
+<h2 id="creating-a-database"><a class="header" href="#creating-a-database">Creating a database</a></h2>
 <p>Next, we need a Postgres database with the following specifications:</p>
 <ul>
 <li>1GB RAM</li>
@@ -253,29 +262,29 @@ We will download the key, then convert it to base64.</p>
 </ul>
 <p><em>We recommend that your database not be accessible to the internet, and restrict inbound connections to the web servers hosting the container over TCP port 5432.</em></p>
 <p>Note the connection string, which is the <code>DATABASE_URL</code></p>
-<pre><code class="language-bash">DATABASE_URL=&quot;postgresql://USER:PASSWORD@HOST:PORT/DATABASE&quot;
+<pre><code class="language-bash">DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
 </code></pre>
-<h2><a class="header" href="#reviewing-the-environment-variables--reviewing-environment-variables-" id="reviewing-the-environment-variables--reviewing-environment-variables-">Reviewing the Environment Variables { #reviewing-environment-variables }</a></h2>
+<h2 id="reviewing-environment-variables"><a class="header" href="#reviewing-environment-variables">Reviewing the Environment Variables</a></h2>
 <p>We should have all the environment variables we need:</p>
 <pre><code class="language-bash"># From `Choosing and Endpoint`
-BASE_URL=&quot;https://gitnotebooks.mycompany.com&quot;
+BASE_URL="https://gitnotebooks.mycompany.com"
 
 # Your comapany's GitHub Enterprise URL
-GITHUB_BASE_URL=&quot;https://github.mycompany.com&quot;
+GITHUB_BASE_URL="https://github.mycompany.com"
 
 # From `Creating a GitHub App`
-GITHUB_APP_IDENTIFIER=&quot;499732&quot;
-GITHUB_CLIENT_ID=&quot;Iv1.9a814f3c682c9a36&quot;
-GITHUB_CLIENT_SECRET=&quot;0f2e9190d598624847d2b259b5b567cf981d5072&quot;
-GITHUB_PRIVATE_KEY=&quot;LS0tLS12dJQkFNB2s3emt2dBS0nRzbXQzVCRUdJUUVBc2pzNFRSb0ErUVdWdMbFZUeklyQmtkYkZFURSBTXZiZnlqQW9FHU0EgUFJJVk1YWZWUGxaV1NOKUTiBSbNi9HOUTV0YLRVktLS0tLQpCg==&quot;
-GITHUB_WEBHOOK_SECRET=&quot;d1ae70aaf90bd909ce44927350d9aba8c1136d34&quot;
-GITHUB_APP_URL=&quot;https://github.mycompany.com/apps/gitnotebooks-self-hosted&quot;
+GITHUB_APP_IDENTIFIER="499732"
+GITHUB_CLIENT_ID="Iv1.9a814f3c682c9a36"
+GITHUB_CLIENT_SECRET="0f2e9190d598624847d2b259b5b567cf981d5072"
+GITHUB_PRIVATE_KEY="LS0tLS12dJQkFNB2s3emt2dBS0nRzbXQzVCRUdJUUVBc2pzNFRSb0ErUVdWdMbFZUeklyQmtkYkZFURSBTXZiZnlqQW9FHU0EgUFJJVk1YWZWUGxaV1NOKUTiBSbNi9HOUTV0YLRVktLS0tLQpCg=="
+GITHUB_WEBHOOK_SECRET="d1ae70aaf90bd909ce44927350d9aba8c1136d34"
+GITHUB_APP_URL="https://github.mycompany.com/apps/gitnotebooks-self-hosted"
 
 # From `Creating a database`
 DATABASE_URL='postgresql://postgres:somepassword@git-notebooks.database.url.rds.amazonaws.com:5432/postgres'
 
 # Generate this value using `openssl rand -base64 32`
-AES_ENCRYPTION_KEY=&quot;X9CSf8y7Pw9dYSJNUwV4L7jUqH42/Mb27pHBRTUWceI=&quot;
+AES_ENCRYPTION_KEY="X9CSf8y7Pw9dYSJNUwV4L7jUqH42/Mb27pHBRTUWceI="
 </code></pre>
 <p>You are now ready to deploy GitNotebooks Self Hosted.</p>
 
@@ -283,9 +292,7 @@ AES_ENCRYPTION_KEY=&quot;X9CSf8y7Pw9dYSJNUwV4L7jUqH42/Mb27pHBRTUWceI=&quot;
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
 
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -293,41 +300,30 @@ AES_ENCRYPTION_KEY=&quot;X9CSf8y7Pw9dYSJNUwV4L7jUqH42/Mb27pHBRTUWceI=&quot;
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
 
-                
             </nav>
 
         </div>
 
-        
 
-        
 
-        
 
-        
-        <script type="text/javascript">
+        <script>
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
 
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-        
 
-        
 
+    </div>
     </body>
 </html>
