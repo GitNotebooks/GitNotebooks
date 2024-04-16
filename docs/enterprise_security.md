@@ -14,7 +14,7 @@ This is the recommended architecture for a self-hosted deployment, which is also
 
 <img src="./images/architecture.png" alt="Architecture diagram" width="700" />
 
-If using GitHub Enterprise Server, the communication to GitHub remains within your VPN. If using a corporate VPN, all communication from the client remains within the VPN, and the Web Application Firewall is unnecessary.
+If using GitHub Enterprise Server, all network traffic remains within your corporate VPN.
 
 Note: While we replicate the deployment across two Availability Zones for Managed Enterprise accounts, this is not strictly necessary for Self-Hosted.
 
@@ -74,7 +74,7 @@ The following diagrams illustrate the two primary workflows of GitNotebooks
 
 **Does the self-hosted application send any network requests to GitNotebooks?**
 
-No, self-hosted installations do not make any network requests apart from those made to GitHub. If hosting GitHub Enterprise Server, all network traffic remains within your VPN. It is recommended that you restrict network requests from the application server to your GitHub Enterprise Cloud environment if you are not self-hosting GitHub.
+No, self-hosted installations do not make any network requests except to GitHub. If hosting GitHub Enterprise Server, all network traffic remains within your VPN. It is recommended that you restrict network requests from the application server to your GitHub Enterprise Cloud environment if using GitHub Enterprise Cloud.
 
 **Does GitNotebooks have access to any Self Hosted data?**
 
