@@ -331,7 +331,7 @@ NEXT_PUBLIC_ENTERPRISE=true
 <h2 id="architecture"><a class="header" href="#architecture">Architecture</a></h2>
 <p>This is the recommended architecture for a self-hosted deployment, which is also used for the managed Enterprise instances. The diagram summarizes the various components and how they communicate:</p>
 <img src="./images/architecture.png" alt="Architecture diagram" width="700" />
-<p>If using GitHub Enterprise Server, the communication to GitHub remains within your VPN. If using a corporate VPN, all communication from the client remains within the VPN, and the Web Application Firewall is unnecessary.</p>
+<p>If using GitHub Enterprise Server, all network traffic remains within your corporate VPN.</p>
 <p>Note: While we replicate the deployment across two Availability Zones for Managed Enterprise accounts, this is not strictly necessary for Self-Hosted.</p>
 <h2 id="network-security"><a class="header" href="#network-security">Network Security</a></h2>
 <p>This is the recommended network security configuration for a self-hosted deployment, which is also used for the managed Enterprise instances. The table summarizes the inbound/outbound rules for each components as well as their internet configuration. In the case of Self-Hosted with GitHub Server, the application load balancer should not be internet facing, and only accept requests within the corporate VPN.</p>
@@ -373,7 +373,7 @@ NEXT_PUBLIC_ENTERPRISE=true
 <img src="./images/review-data-flow.png" alt="Review Data Flow" width="700" />
 <h2 id="frequently-asked-questions"><a class="header" href="#frequently-asked-questions">Frequently Asked Questions</a></h2>
 <p><strong>Does the self-hosted application send any network requests to GitNotebooks?</strong></p>
-<p>No, self-hosted installations do not make any network requests apart from those made to GitHub. If hosting GitHub Enterprise Server, all network traffic remains within your VPN. It is recommended that you restrict network requests from the application server to your GitHub Enterprise Cloud environment if you are not self-hosting GitHub.</p>
+<p>No, self-hosted installations do not make any network requests except to GitHub. If hosting GitHub Enterprise Server, all network traffic remains within your VPN. It is recommended that you restrict network requests from the application server to your GitHub Enterprise Cloud environment if using GitHub Enterprise Cloud.</p>
 <p><strong>Does GitNotebooks have access to any Self Hosted data?</strong></p>
 <p>No, all data is stored within your own cloud environment. GitNotebooks does not have access to any of your data.</p>
 
