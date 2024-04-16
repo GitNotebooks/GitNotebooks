@@ -6,6 +6,7 @@ Everything on this page applies to both self-hosted and managed Enterprise insta
 
 - GitNotebooks web application servers and image storage run in AWS.
 - All secrets are stored in AWS Secret Manager, with audit trails enabled.
+- All data is stored in RDS with TLS communication required, data encypted at rest, not internet-facing
 
 ## Architecture
 
