@@ -3,8 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>GitNotebooks Docs</title>
-        <meta name="robots" content="noindex">
+        <title>Enterprise Security - GitNotebooks Docs</title>
 
 
         <!-- Custom HTML head -->
@@ -89,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="self_hosted.html"><strong aria-hidden="true">1.</strong> Self Hosted</a></li><li class="chapter-item expanded "><a href="enterprise_security.html"><strong aria-hidden="true">2.</strong> Enterprise Security</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="self_hosted.html"><strong aria-hidden="true">1.</strong> Self Hosted</a></li><li class="chapter-item expanded "><a href="enterprise_security.html" class="active"><strong aria-hidden="true">2.</strong> Enterprise Security</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -177,150 +176,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="self-hosted"><a class="header" href="#self-hosted">Self Hosted</a></h1>
-<p><em>This tutorial shows how to deploy self-hosted GitNotebooks to a GitHub Enterprise account</em></p>
-<h3 id="before-we-start-the-tutorial"><a class="header" href="#before-we-start-the-tutorial">Before we start the tutorial</a></h3>
-<p>The tutorial is divided into several sections:</p>
-<ul>
-<li><a href="self_hosted.html#choosing-an-endpoint">Choosing an Endpoint</a></li>
-<li><a href="self_hosted.html#creating-a-github-app">Creating a GitHub App</a></li>
-<li><a href="self_hosted.html#creating-a-database">Creating a Database</a></li>
-<li><a href="self_hosted.html#reviewing-environment-variables">Reviewing the Environment Variables</a></li>
-<li><a href="self_hosted.html#deploy-container">Deploy container</a></li>
-</ul>
-<p>The goal is to create a set of environment variables that look like this:</p>
-<pre><code class="language-bash">BASE_URL=https://gitnotebooks.mycompany.com
-GITHUB_BASE_URL=https://github.mycompany.com
-GITHUB_APP_IDENTIFIER=499732
-GITHUB_CLIENT_SECRET=0f2e9190d598624847d2b259b5b567cf981d5072
-GITHUB_PRIVATE_KEY=LS0tLS12dJQkFNB2s3emt2dBS0nRzbXQzVCRUdJUUVBc2pzNFRSb0ErUVdWdMbFZUeklyQmtkYkZFURSBTXZiZnlqQW9FHU0EgUFJJVk1YWZWUGxaV1NOKUTiBSbNi9HOUTV0YLRVktLS0tLQpCg==
-GITHUB_WEBHOOK_SECRET=d1ae70aaf90bd909ce44927350d9aba8c1136d34
-GITHUB_APP_URL=https://github.mycompany.com/apps/gitnotebooks-self-hosted
-NEXT_PUBLIC_GITHUB_BASE_URL=https://github.com
-NEXT_PUBLIC_GITHUB_CLIENT_ID=Iv1.fed2b15afabbc1a6
-DATABASE_URL=postgresql://postgres:somepassword@git-notebooks.database.url.rds.amazonaws.com:5432/postgres
-AES_ENCRYPTION_KEY=X9CSf8y7Pw9dYSJNUwV4L7jUqH42/Mb27pHBRTUWceI=
-NEXT_PUBLIC_ENTERPRISE=true
-</code></pre>
-<p>In this tutorial, we’ll note an environment variables with this notation: <code>SOME_ENV_VAR</code></p>
-<h3 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h3>
-<p>We’ll assume that you have enough permission to create a new GitHub app and a Postgres database. We’ll also assume that you have access to the private GitNotebooks container image.</p>
-<p>If you have not yet received the GitNotebooks container image, you can do so by filling out this form: <a href="https://form.typeform.com/to/pjV6jHKr">Self-hosted signup</a></p>
-<h2 id="choosing-an-endpoint"><a class="header" href="#choosing-an-endpoint">Choosing an Endpoint</a></h2>
-<p>Whether you’re hosting this service at a URL like <code>gitnotebooks.yourcompanydomain.com</code>, or a private IP address, it’s helpful to decide what the endpoint will be up front. We will refer to this URL as the <code>BASE_URL</code>.</p>
-<pre><code class="language-bash"># Example base URL
-BASE_URL="https://gitnotebooks.yourcompanydomain.com"
-</code></pre>
-<h2 id="creating-a-github-app"><a class="header" href="#creating-a-github-app">Creating a GitHub App</a></h2>
-<p>First, click <strong>New GitHub App</strong>. If you need help finding this button, the GitHub docs can help: <a href="https://docs.github.com/en/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/registering-a-github-app">Registering a GitHub App</a>
-Here’s how to fill out the form:</p>
-<img alt="register GitNotebooks GitHub App 1" src="images/gh-app-1.png" width="500px" />
-<img alt="register GitNotebooks GitHub App 2" src="images/gh-app-2.png" width="500px" />
-<img alt="register GitNotebooks GitHub App 3" src="images/gh-app-3.png" width="500px" />
-<img alt="register GitNotebooks GitHub App 4" src="images/gh-app-4.png" width="500px" />
-<img alt="register GitNotebooks GitHub App 5" src="images/gh-app-5.png" width="500px" />
-<p>You should now have a GitHub App with the following settings:</p>
-<ul>
-<li>GitHub App Name: <code>GitNotebooks</code></li>
-<li>Homepage URL: <code>https://gitnotebook.com</code></li>
-<li>Callback URL: <code>https://gitnotebooks.your-domain.com/api/auth/callback/github</code></li>
-<li>Post installation: <code>https://gitnotebooks.your-domain.com/dashboard</code></li>
-<li>Webhook URL: <code>https://gitnotebooks.your-domain.com/api/event_handler</code></li>
-<li>Webhook secret: A custom webhook seceret</li>
-<li>Permissions
-<ul>
-<li>Contents: <code>Read and write</code></li>
-<li>Pull requests: <code>Read and write</code></li>
-<li>Email address: <code>Read only</code></li>
-</ul>
-</li>
-<li>Subscribe to events:
-<ul>
-<li>Pull request</li>
-</ul>
-</li>
-</ul>
-<h3 id="after-creating-the-github-app"><a class="header" href="#after-creating-the-github-app">After creating the GitHub App</a></h3>
-<p>We'll need to collect some information for GitNotebooks to identify itself as the GitHub App.</p>
-<p><strong>Generate a new client secret <code>GITHUB_CLIENT_SECRET</code></strong></p>
-<img alt="generate client secret" src="images/gh-app-client-secrets.png" width="300px" />
-<p><strong>Generate a private key</strong>
-We will download the key, then convert it to base64.</p>
-<img alt="download private key for GitHub App" src="images/gh-app-private-key.png" width="300px" />
-<p>Convert the key to base64.</p>
-<pre><code class="language-bash">cat path/to/your/key.pem | base64
-</code></pre>
-<p><strong>Note the url of the public page <code>GITHUB_APP_URL</code></strong></p>
-<p>This URL is used to direct users to add repos to the GitHub app installation.</p>
-<img src="images/public-url.png" alt="public url link for GitHub App" width="200"/>
-<h3 id="making-it-pretty-optional"><a class="header" href="#making-it-pretty-optional">Making it pretty (optional)</a></h3>
-<p>Finally, you can upload a <a href="images/logo.png">logo</a> which is used as the app's avatar.</p>
-<h2 id="creating-a-database"><a class="header" href="#creating-a-database">Creating a database</a></h2>
-<p>Next, we need a Postgres database with the following specifications:</p>
-<ul>
-<li>1GB RAM</li>
-<li>20GiB storage</li>
-<li>PostgreSQL 9.4 or higher</li>
-<li>Username/Password authentication</li>
-</ul>
-<p><em>We recommend that your database not be accessible to the internet, and restrict inbound connections to the web servers hosting the container over TCP port 5432.</em></p>
-<p>Note the connection string, which is the <code>DATABASE_URL</code></p>
-<pre><code class="language-bash">DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
-</code></pre>
-<h2 id="reviewing-environment-variables"><a class="header" href="#reviewing-environment-variables">Reviewing the Environment Variables</a></h2>
-<p>We should have all the environment variables we need:</p>
-<pre><code class="language-bash"># From `Choosing and Endpoint`
-BASE_URL=https://gitnotebooks.mycompany.com
-
-# Your comapany's GitHub Enterprise URL
-GITHUB_BASE_URL=https://github.mycompany.com
-
-# From `Creating a GitHub App`
-GITHUB_APP_IDENTIFIER=499732
-NEXT_PUBLIC_GITHUB_CLIENT_ID=Iv1.fed2b15afabbc1a6
-GITHUB_CLIENT_SECRET=0f2e9190d598624847d2b259b5b567cf981d5072
-GITHUB_PRIVATE_KEY=LS0tLS12dJQkFNB2s3emt2dBS0nRzbXQzVCRUdJUUVBc2pzNFRSb0ErUVdWdMbFZUeklyQmtkYkZFURSBTXZiZnlqQW9FHU0EgUFJJVk1YWZWUGxaV1NOKUTiBSbNi9HOUTV0YLRVktLS0tLQpCg==
-GITHUB_WEBHOOK_SECRET=d1ae70aaf90bd909ce44927350d9aba8c1136d34
-GITHUB_APP_URL=https://github.mycompany.com/apps/gitnotebooks-self-hosted
-
-# Base URL of your GitHub instance, if using GitHub Enterprise Cloud, use the following example:
-NEXT_PUBLIC_GITHUB_BASE_URL=https://github.com
-
-# From `Creating a database`
-DATABASE_URL=postgresql://postgres:somepassword@git-notebooks.database.url.rds.amazonaws.com:5432/postgres
-
-# Generate this value using `openssl rand -base64 32`
-AES_ENCRYPTION_KEY=X9CSf8y7Pw9dYSJNUwV4L7jUqH42/Mb27pHBRTUWceI=
-
-NEXT_PUBLIC_ENTERPRISE=true
-</code></pre>
-<p>You are now ready to deploy GitNotebooks Self Hosted.</p>
-<h2 id="deploy-container"><a class="header" href="#deploy-container">Deploying a container</a></h2>
-<p>The final step is to deploy the GitNotebooks container image with these environment variables. Whle GitNotebooks Self Hosted will not make any network requests apart from GitHub, we recommend the following security settings:</p>
-<ul>
-<li>Web application servers
-<ul>
-<li>Container environment variables stored as secrets (e.g. AWS Secrets Manager)</li>
-<li>Outbound network traffic restrictred to GitHub and Database</li>
-<li>Inbound traffic restricted to corpotate VPN</li>
-</ul>
-</li>
-<li>Database
-<ul>
-<li>Encrypted at rest</li>
-<li>Require SSL connections from web server</li>
-<li>Inbound restricted to web servers via TCP port 5432</li>
-<li>No outbound network requests</li>
-</ul>
-</li>
-<li>Application load balancer
-<ul>
-<li>Restrict inbound requests to coroporate VPN and GitHub Webhooks</li>
-<li>Restrict outbound requests to web application</li>
-</ul>
-</li>
-</ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="gitnotebooks-enterprise-security"><a class="header" href="#gitnotebooks-enterprise-security">GitNotebooks Enterprise Security</a></h1>
+                        <h1 id="gitnotebooks-enterprise-security"><a class="header" href="#gitnotebooks-enterprise-security">GitNotebooks Enterprise Security</a></h1>
 <p>This page offers an overview of GitNotebooks security-related features. Note that while there are many ways to configure GitNotebooks we'll only discuss the most secure configuration here.</p>
 <p>Everything on this page applies to both self-hosted and managed Enterprise instances. A managed instance is just a self-hosted instance that we run for you (outside your VPN), configured as follows:</p>
 <ul>
@@ -366,6 +222,9 @@ This is up to your own discression but the recommended architecture diagram abov
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="self_hosted.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
 
                         <div style="clear: both"></div>
@@ -374,6 +233,9 @@ This is up to your own discression but the recommended architecture diagram abov
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="self_hosted.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
             </nav>
 
@@ -397,11 +259,6 @@ This is up to your own discression but the recommended architecture diagram abov
 
         <!-- Custom JS scripts -->
 
-        <script>
-        window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
-        });
-        </script>
 
     </div>
     </body>
