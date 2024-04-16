@@ -265,7 +265,7 @@ You agree to indemnify Us, defend Us, and hold Us and our affiliates, licensors 
 
 ## Q. Changes to These Terms
 
-We reserve the right, at our sole discretion, to amend these Terms of Service at any time and will update these Terms of Service in the event of any such amendments. We will notify our users of material changes to this Agreement, such as price increases, at least 30 days prior to the change taking effect by posting a notice on our Website or sending email to the primary email address specified in Your GitNotebooks account. Customer's continued use of the Service after those 30 days constitutes agreement to those revisions of this Agreement. For any other modifications, Your continued use of the Website constitutes agreement to our revisions of these Terms of Service.
+We reserve the right, at our sole discretion, to amend these Terms of Service at any time and will update these Terms of Service in the event of any such amendments. We will notify our users of material changes to this Agreement, such as price increases, at least 30 days prior to the change taking effect by posting a notice on our Website or sending email to the primary email address specified in Your GitNotebooks account. Customer's continued use of the Service after those 30 days constitutes agreement to those revisions of this Agreement. For any other modifications, Your continued use of the Website or Service constitutes agreement to our revisions of these Terms of Service.
 
 We reserve the right at any time and from time to time to modify or discontinue, temporarily or permanently, the Website (or any part of it) with or without notice.
 
@@ -297,7 +297,7 @@ All disputes arising under or relating to this Agreement shall be resolved exclu
 
 ### 7. Amendments; Complete Agreement
 
-This Agreement may only be modified by a written amendment signed by an authorized representative of GitNotebooks, or by the posting by GitNotebooks of a revised version in accordance with Section P. Changes to These Terms. This Agreement including these Terms of Service and the GitNotebooks Privacy Policy, represent the complete and exclusive statement of the agreement between You and GitNotebooks. This Agreement supersedes any proposal or prior agreement oral or written, and any other communications between You and GitNotebooks relating to the subject matter of these terms including any confidentiality or nondisclosure agreements.
+This Agreement may only be modified by a written amendment signed by an authorized representative of GitNotebooks, or by the posting by GitNotebooks of a revised version in accordance with Section Q. Changes to These Terms. This Agreement including these Terms of Service and the GitNotebooks Privacy Policy, represent the complete and exclusive statement of the agreement between You and GitNotebooks. This Agreement supersedes any proposal or prior agreement oral or written, and any other communications between You and GitNotebooks relating to the subject matter of these terms including any confidentiality or nondisclosure agreements.
 
 ### 8. Questions
 
