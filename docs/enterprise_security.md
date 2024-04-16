@@ -20,6 +20,8 @@ Note: While we replicate the deployment across two Availability Zones for Manage
 
 ## Network Security
 
+This is the recommended network security configuration for a self-hosted deployment, which is also used for the managed Enterprise instances. The table summarizes the inbound/outbound rules for each components as well as their internet configuration. In the case of Self-Hosted with GitHub Server, the application load balancer should not be internet facing, and only accept requests within the corporate VPN.
+
 | Service                   | Inbound                                                        | Outbound                                | Internet-Facing | Internet Access |
 | ------------------------- | -------------------------------------------------------------- | --------------------------------------- | --------------- | --------------- |
 | Application Load Balancer | TCP:80 (redirect to 443) <br> TCP:443 GitHub and Corporate VPN | TCP:3000 Web application security group | Yes             | N/A             |
