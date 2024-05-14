@@ -22,11 +22,11 @@ GITHUB_CLIENT_SECRET=0f2e9190d598624847d2b259b5b567cf981d5072
 GITHUB_PRIVATE_KEY=LS0tLS12dJQkFNB2s3emt2dBS0nRzbXQzVCRUdJUUVBc2pzNFRSb0ErUVdWdMbFZUeklyQmtkYkZFURSBTXZiZnlqQW9FHU0EgUFJJVk1YWZWUGxaV1NOKUTiBSbNi9HOUTV0YLRVktLS0tLQpCg==
 GITHUB_WEBHOOK_SECRET=d1ae70aaf90bd909ce44927350d9aba8c1136d34
 GITHUB_APP_URL=https://github.mycompany.com/apps/gitnotebooks-self-hosted
-NEXT_PUBLIC_GITHUB_BASE_URL=https://github.com
-NEXT_PUBLIC_GITHUB_CLIENT_ID=Iv1.fed2b15afabbc1a6
+GITHUB_BASE_URL=https://github.com
+GITHUB_CLIENT_ID=Iv1.fed2b15afabbc1a6
 DATABASE_URL=postgresql://postgres:somepassword@git-notebooks.database.url.rds.amazonaws.com:5432/postgres
 AES_ENCRYPTION_KEY=X9CSf8y7Pw9dYSJNUwV4L7jUqH42/Mb27pHBRTUWceI=
-NEXT_PUBLIC_ENTERPRISE=true
+ENTERPRISE=true
 ```
 
 In this tutorial, we’ll note an environment variables with this notation: `SOME_ENV_VAR`
@@ -131,14 +131,14 @@ GITHUB_BASE_URL=https://github.mycompany.com
 
 # From `Creating a GitHub App`
 GITHUB_APP_IDENTIFIER=499732
-NEXT_PUBLIC_GITHUB_CLIENT_ID=Iv1.fed2b15afabbc1a6
+GITHUB_CLIENT_ID=Iv1.fed2b15afabbc1a6
 GITHUB_CLIENT_SECRET=0f2e9190d598624847d2b259b5b567cf981d5072
 GITHUB_PRIVATE_KEY=LS0tLS12dJQkFNB2s3emt2dBS0nRzbXQzVCRUdJUUVBc2pzNFRSb0ErUVdWdMbFZUeklyQmtkYkZFURSBTXZiZnlqQW9FHU0EgUFJJVk1YWZWUGxaV1NOKUTiBSbNi9HOUTV0YLRVktLS0tLQpCg==
 GITHUB_WEBHOOK_SECRET=d1ae70aaf90bd909ce44927350d9aba8c1136d34
 GITHUB_APP_URL=https://github.mycompany.com/apps/gitnotebooks-self-hosted
 
 # Base URL of your GitHub instance, if using GitHub Enterprise Cloud, use the following example:
-NEXT_PUBLIC_GITHUB_BASE_URL=https://github.com
+GITHUB_BASE_URL=https://github.com
 
 # From `Creating a database`
 DATABASE_URL=postgresql://postgres:somepassword@git-notebooks.database.url.rds.amazonaws.com:5432/postgres
@@ -146,7 +146,7 @@ DATABASE_URL=postgresql://postgres:somepassword@git-notebooks.database.url.rds.a
 # Generate this value using `openssl rand -base64 32`
 AES_ENCRYPTION_KEY=X9CSf8y7Pw9dYSJNUwV4L7jUqH42/Mb27pHBRTUWceI=
 
-NEXT_PUBLIC_ENTERPRISE=true
+ENTERPRISE=true
 ```
 
 You are now ready to deploy GitNotebooks Self Hosted.
