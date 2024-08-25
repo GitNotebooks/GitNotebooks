@@ -177,7 +177,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="self-hosted"><a class="header" href="#self-hosted">Self Hosted</a></h1>
-<p><em>This tutorial shows how to deploy self-hosted GitNotebooks to a GitHub Enterprise account</em></p>
+<p><em>This tutorial shows how to deploy GitNotebooks Self-Hosted</em></p>
 <h3 id="before-we-start-the-tutorial"><a class="header" href="#before-we-start-the-tutorial">Before we start the tutorial</a></h3>
 <p>The tutorial is divided into several sections:</p>
 <ul>
@@ -195,23 +195,25 @@ GITHUB_CLIENT_SECRET=0f2e9190d598624847d2b259b5b567cf981d5072
 GITHUB_PRIVATE_KEY=LS0tLS12dJQkFNB2s3emt2dBS0nRzbXQzVCRUdJUUVBc2pzNFRSb0ErUVdWdMbFZUeklyQmtkYkZFURSBTXZiZnlqQW9FHU0EgUFJJVk1YWZWUGxaV1NOKUTiBSbNi9HOUTV0YLRVktLS0tLQpCg==
 GITHUB_WEBHOOK_SECRET=d1ae70aaf90bd909ce44927350d9aba8c1136d34
 GITHUB_APP_URL=https://github.mycompany.com/apps/gitnotebooks-self-hosted
-GITHUB_BASE_URL=https://github.com
 GITHUB_CLIENT_ID=Iv1.fed2b15afabbc1a6
 DATABASE_URL=postgresql://postgres:somepassword@git-notebooks.database.url.rds.amazonaws.com:5432/postgres
 AES_ENCRYPTION_KEY=X9CSf8y7Pw9dYSJNUwV4L7jUqH42/Mb27pHBRTUWceI=
 ENTERPRISE=true
 </code></pre>
-<p>In this tutorial, we’ll note an environment variables with this notation: <code>SOME_ENV_VAR</code></p>
+<p>In this tutorial, we'll denote environment variables with this notation: <code>SOME_ENV_VAR</code></p>
+<p>Once the environment variables are set correctly, you can run the GitNotebooks container. Here's an example using Docker:</p>
+<pre><code class="language-bash">docker run -p 80:3000 --env-file .env gitnotebooks/self-hosted:1.0.0
+</code></pre>
 <h3 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h3>
-<p>We’ll assume that you have enough permission to create a new GitHub app and a Postgres database. We’ll also assume that you have access to the private GitNotebooks container image.</p>
-<p>If you have not yet received the GitNotebooks container image, you can do so by filling out this form: <a href="https://form.typeform.com/to/pjV6jHKr">Self-hosted signup</a></p>
+<p>We'll assume that you have enough permission to create a new GitHub app and a Postgres database. We'll also assume that you have access to the private GitNotebooks container image.</p>
+<p>If you have not yet received the GitNotebooks container image, you can do so by filling out this form: <a href="https://share.hsforms.com/1KcFTS0dHRPqyMli5Dr8kiwryqe1">Self-hosted signup</a></p>
 <h2 id="choosing-an-endpoint"><a class="header" href="#choosing-an-endpoint">Choosing an Endpoint</a></h2>
-<p>Whether you’re hosting this service at a URL like <code>gitnotebooks.yourcompanydomain.com</code>, or a private IP address, it’s helpful to decide what the endpoint will be up front. We will refer to this URL as the <code>BASE_URL</code>.</p>
-<pre><code class="language-bash"># Example base URL
-BASE_URL="https://gitnotebooks.yourcompanydomain.com"
+<p>The GitNotebooks web application needs to be accessible via a URL. This URL will be referred to as the <code>BASE_URL</code> throughout the setup process. You'll need to decide on this <code>BASE_URL</code> before proceeding.</p>
+<p>The <code>BASE_URL</code> will be used as an environment variable in your configuration. For example, it might look like:</p>
+<pre><code class="language-bash">BASE_URL="https://gitnotebooks.yourcompanydomain.com"
 </code></pre>
 <h2 id="creating-a-github-app"><a class="header" href="#creating-a-github-app">Creating a GitHub App</a></h2>
-<p>First, click <strong>New GitHub App</strong>. If you need help finding this button, the GitHub docs can help: <a href="https://docs.github.com/en/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/registering-a-github-app">Registering a GitHub App</a>
+<p>First, navigate to your GitHub Organization &gt; Settings &gt; Developer Settings &gt; GitHub Apps &gt; New GitHub App. If you need help finding this button, the GitHub docs can help: <a href="https://docs.github.com/en/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/registering-a-github-app">Registering a GitHub App</a>
 Here’s how to fill out the form:</p>
 <img alt="register GitNotebooks GitHub App 1" src="images/gh-app-1.png" width="500px" />
 <img alt="register GitNotebooks GitHub App 2" src="images/gh-app-2.png" width="500px" />
@@ -271,9 +273,6 @@ We will download the key, then convert it to base64.</p>
 <pre><code class="language-bash"># From `Choosing and Endpoint`
 BASE_URL=https://gitnotebooks.mycompany.com
 
-# Your comapany's GitHub Enterprise URL
-GITHUB_BASE_URL=https://github.mycompany.com
-
 # From `Creating a GitHub App`
 GITHUB_APP_IDENTIFIER=499732
 GITHUB_CLIENT_ID=Iv1.fed2b15afabbc1a6
@@ -282,7 +281,7 @@ GITHUB_PRIVATE_KEY=LS0tLS12dJQkFNB2s3emt2dBS0nRzbXQzVCRUdJUUVBc2pzNFRSb0ErUVdWdM
 GITHUB_WEBHOOK_SECRET=d1ae70aaf90bd909ce44927350d9aba8c1136d34
 GITHUB_APP_URL=https://github.mycompany.com/apps/gitnotebooks-self-hosted
 
-# Base URL of your GitHub instance, if using GitHub Enterprise Cloud, use the following example:
+# Base URL of your GitHub instance, if you are not self-hosting GitHub, simply use https://github.com
 GITHUB_BASE_URL=https://github.com
 
 # From `Creating a database`
@@ -293,32 +292,36 @@ AES_ENCRYPTION_KEY=X9CSf8y7Pw9dYSJNUwV4L7jUqH42/Mb27pHBRTUWceI=
 
 ENTERPRISE=true
 </code></pre>
-<p>You are now ready to deploy GitNotebooks Self Hosted.</p>
+<p>You are now ready to deploy GitNotebooks Self-Hosted.</p>
 <h2 id="deploy-container"><a class="header" href="#deploy-container">Deploying a container</a></h2>
-<p>The final step is to deploy the GitNotebooks container image with these environment variables. Whle GitNotebooks Self Hosted will not make any network requests apart from GitHub, we recommend the following security settings:</p>
+<p>The final step is to deploy the GitNotebooks container image with the environment variables we've prepared. The container serves traffic over port 3000.</p>
+<p>While GitNotebooks Self-Hosted only makes network requests to GitHub, we recommend implementing the following security measures:</p>
+<ol>
+<li>
+<p>Web application servers:</p>
 <ul>
-<li>Web application servers
-<ul>
-<li>Container environment variables stored as secrets (e.g. AWS Secrets Manager)</li>
-<li>Outbound network traffic restrictred to GitHub and Database</li>
-<li>Inbound traffic restricted to corpotate VPN</li>
+<li>Store container environment variables as secrets (e.g., using AWS Secrets Manager)</li>
+<li>Restrict outbound network traffic to GitHub and the database</li>
+<li>Limit inbound traffic to your corporate VPN</li>
 </ul>
 </li>
-<li>Database
+<li>
+<p>Database:</p>
 <ul>
-<li>Encrypted at rest</li>
-<li>Require SSL connections from web server</li>
-<li>Inbound restricted to web servers via TCP port 5432</li>
-<li>No outbound network requests</li>
+<li>Implement encryption at rest</li>
+<li>Require SSL connections from the web server</li>
+<li>Restrict inbound connections to web servers via TCP port 5432</li>
+<li>Disable all outbound network requests</li>
 </ul>
 </li>
-<li>Application load balancer
+<li>
+<p>Application load balancer:</p>
 <ul>
-<li>Restrict inbound requests to coroporate VPN and GitHub Webhooks</li>
-<li>Restrict outbound requests to web application</li>
+<li>Limit inbound requests to your corporate VPN and GitHub Webhooks</li>
+<li>Restrict outbound requests to the web application</li>
 </ul>
 </li>
-</ul>
+</ol>
 
                     </main>
 
