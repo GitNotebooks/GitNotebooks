@@ -154,9 +154,16 @@ ENTERPRISE=true
 
 You are now ready to deploy GitNotebooks Self-Hosted.
 
-## Deploying a container { #deploy-container }
+## Deploying the GitNotebooks Container { #deploy-container }
 
-The final step is to deploy the GitNotebooks container image with the environment variables we've prepared. The container serves traffic over port 3000.
+The final step is to deploy the GitNotebooks container image with the environment variables we've prepared. Here are some key points to consider:
+
+- The container image serves traffic over port 3000, which should be mapped to port 80 on the host.
+- A health check endpoint is available at `/api/health`. This endpoint verifies the web application's connection to the database and confirms that the environment variables are properly set.
+
+To deploy the container, use your preferred container orchestration platform (e.g., ECS, Kubernetes) and ensure that the necessary port mapping and environment variables are configured.
+
+## Security Recommendations { #security-recommendations }
 
 While GitNotebooks Self-Hosted only makes network requests to GitHub, we recommend implementing the following security measures:
 
