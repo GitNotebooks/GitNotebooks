@@ -12,7 +12,7 @@ Everything on this page applies to both self-hosted and managed Enterprise insta
 
 This is the recommended architecture for a self-hosted deployment, which is also used for the managed Enterprise instances. The diagram summarizes the various components and how they communicate:
 
-<img src="./images/architecture.png" alt="Architecture diagram" width="700" />
+<img src="./images/architecture.png" alt="Architecture diagram" width="700px" />
 
 If using GitHub Enterprise Server, all network traffic remains within your corporate VPN.
 
@@ -67,8 +67,8 @@ Authorizations in GitNotebooks are inferred from the permissions granted to user
 
 The following diagrams illustrate the two primary workflows of GitNotebooks
 
-<img src="./images/login-data-flow.png" alt="Login Data Flow" width="700" />
-<img src="./images/review-data-flow.png" alt="Review Data Flow" width="700" />
+<img src="./images/login-data-flow.png" alt="Login Data Flow" width="700px" />
+<img src="./images/review-data-flow.png" alt="Review Data Flow" width="700px" />
 
 ## Frequently Asked Questions
 

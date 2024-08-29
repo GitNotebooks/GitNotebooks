@@ -6,7 +6,7 @@ This guide will walk you through the process of reviewing Jupyter notebooks usin
 
 When you open a new pull request that includes changes to Jupyter notebooks, GitNotebooks automatically adds a comment to your pull request. This comment contains a link inviting you to review the notebooks using GitNotebooks.
 
-<img src="./images/review/review-notebook-link.png" alt="Start a review image" width="700" />
+<img src="./images/review/review-notebook-link.png" alt="Start a review image" width="700px" />
 
 ## Adding and Viewing Comments
 
@@ -52,7 +52,7 @@ Comments will stay in place as new commits are pushed to the branch.
 
 Comments are automatically marked as outdated if a new commit changes the specific line since the comment was added.
 
-<img src="./images/review/outdated.png" alt="Image showing an outdated review comment" width="700">
+<img src="./images/review/outdated.png" alt="Image showing an outdated review comment" width="700px">
 
 ## Viewing Diffs
 
@@ -70,7 +70,7 @@ Code diffs are rendered similarly to GitHub.
 
 Context around the changed line is collapsed. Click the blue line to expand the diff context.
 
-<img src="./images/review/diff-context.png" alt="Image showing the code diff in a notebook with the ability to expand above and below" width="700">
+<img src="./images/review/diff-context.png" alt="Image showing the code diff in a notebook with the ability to expand above and below" width="700px">
 
 ### Markdown Diffs
 
