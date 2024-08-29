@@ -2,7 +2,10 @@
 
 ## Theme Selection
 
-GitNotebooks supports dark mode. To change the theme:
+GitNotebooks has a dark mode.
+<img src="./images/settings/dark-theme.png" alt="GitNotebooks in dark theme" width="700px">
+
+To change the theme:
 
 1. Sign in
 2. Select your user avatar on the top right
@@ -10,13 +13,11 @@ GitNotebooks supports dark mode. To change the theme:
 
 <img src="./images/settings/theme-selection.png" alt="Theme selection in GitNotebooks" width="400px" />
 
-<img src="./images/settings/dark-theme.png" alt="GitNotebooks in dark theme" width="700px">
-
 ## Notebook Settings
 
 To access notebook diff settings open the gear icon to the right of the pull request title.
 
-![Settings](./images/settings/settings.png)
+<img src="./images/settings/settings.png" alt="Settings view for a notebook" width="400px" />
 
 These settings will apply to all notebook diffs.
 
