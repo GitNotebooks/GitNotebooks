@@ -9,7 +9,26 @@ Getting GitNotebooks up and running is quick and easy. Follow these simple steps
 
 1. Sign in to the [GitNotebooks dashboard](https://app.gitnotebooks.com/dashboard)
 2. Click `Add Repo`
-3. Select the repositories that contain notebooks
+3. Select the repositories
+
+<div style="display: flex; flex-direction: column; align-items: center;">
+  <div>
+    <p><strong>Step 1: Sign in to GitNotebooks</strong></p>
+    <img src="./images/getting-started/sign-in-button.png" alt="Sign in button on GitNotebooks dashboard">
+  </div>
+  <div>
+    <p><strong>Step 2: Click 'Add Repo' button</strong></p>
+    <img src="./images/getting-started/add-repos.png" alt="Add Repo button on GitNotebooks dashboard">
+  </div>
+  <div>
+    <p><strong>Step 3: Select repositories to add</strong></p>
+    <img src="./images/getting-started/select-repos.png" alt="Repository selection interface in GitNotebooks">
+  </div>
+  <div>
+    <p><strong>Step 4: Start reviewing notebooks</strong></p>
+    <img src="./images/getting-started/repo-list.png" alt="Listed repositories which have GitNotebooks installed">
+  </div>
+</div>
 
 The entire process takes about a minute!
 
