@@ -186,7 +186,7 @@
 </ul>
 <h2 id="architecture"><a class="header" href="#architecture">Architecture</a></h2>
 <p>This is the recommended architecture for a self-hosted deployment, which is also used for the managed Enterprise instances. The diagram summarizes the various components and how they communicate:</p>
-<img src="./images/architecture.png" alt="Architecture diagram" width="700" />
+<img src="./images/architecture.png" alt="Architecture diagram" width="700px" />
 <p>If using GitHub Enterprise Server, all network traffic remains within your corporate VPN.</p>
 <p>Note: While we replicate the deployment across two Availability Zones for Managed Enterprise accounts, this is not strictly necessary for Self-Hosted.</p>
 <h2 id="network-security"><a class="header" href="#network-security">Network Security</a></h2>
@@ -225,8 +225,8 @@
 <p>Authorizations in GitNotebooks are inferred from the permissions granted to users in GHE, i.e. repository read/write/admin and organization owner. There are no separate roles or authorizations maintained within GitNotebooks.</p>
 <h2 id="data-flow"><a class="header" href="#data-flow">Data Flow</a></h2>
 <p>The following diagrams illustrate the two primary workflows of GitNotebooks</p>
-<img src="./images/login-data-flow.png" alt="Login Data Flow" width="700" />
-<img src="./images/review-data-flow.png" alt="Review Data Flow" width="700" />
+<img src="./images/login-data-flow.png" alt="Login Data Flow" width="700px" />
+<img src="./images/review-data-flow.png" alt="Review Data Flow" width="700px" />
 <h2 id="frequently-asked-questions"><a class="header" href="#frequently-asked-questions">Frequently Asked Questions</a></h2>
 <p><strong>Does the self-hosted application send any network requests to GitNotebooks?</strong></p>
 <p>No, self-hosted installations do not make any network requests except to GitHub. If hosting GitHub Enterprise Server, all network traffic remains within your VPN. It is recommended that you restrict network requests from the application server to your GitHub Enterprise Cloud environment if using GitHub Enterprise Cloud.</p>
