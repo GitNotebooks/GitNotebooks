@@ -8,6 +8,10 @@ GitNotebooks supports dark mode. To change the theme:
 2. Select your user avatar on the top right
 3. Choose a theme
 
+<img src="./images/settings/theme-selection.png" alt="Theme selection in GitNotebooks" width="500" />
+
+<img src="./images/settings/dark-theme.png" alt="GitNotebooks in dark theme" width="700">
+
 ## Notebook Settings
 
 To access notebook diff settings open the gear icon to the right of the pull request title.
