@@ -2,13 +2,13 @@
 
 This guide will walk you through the process of reviewing Jupyter notebooks using GitNotebooks. We'll cover how to add comments, understand diffs, and submit reviews.
 
-## Opening a Pull Request
+## Viewing a Notebook Change
 
 When you open a new pull request that includes changes to Jupyter notebooks, GitNotebooks automatically adds a comment to your pull request. This comment contains a link inviting you to review the notebooks using GitNotebooks.
 
 <img src="./images/review/review-notebook-link.png" alt="Start a review image" width="700" />
 
-## Comments
+## Adding and Viewing Comments
 
 Once you have opened up a review in GitNotebooks, you can add comments to both code and markdown cells.
 
@@ -16,20 +16,35 @@ Once you have opened up a review in GitNotebooks, you can add comments to both c
 
 You can add single-line or multi-line comments on either the left or right side of the code.
 
-<img src="./images/review/code-comment.png" alt="Image showing single-line code comment" width="700" />
-<img src="./images/review/mulit-line-code-comment.png" alt="Image showing multi-line code comment" width="700" />
+<div style="display: flex; justify-content: space-between;">
+  <div style="width: 48%;">
+    <h4>Single-line Comment</h4>
+    <img src="./images/review/code-comment.png" alt="Image showing single-line code comment" width="100%">
+  </div>
+  <div style="width: 48%;">
+    <h4>Multi-line Comment</h4>
+    <img src="./images/review/mulit-line-code-comment.png" alt="Image showing multi-line code comment" width="100%">
+  </div>
+</div>
 
 ### Markdown Comments
 
 To comment on markdown, simply click directly on the markdown text. Each markdown comment is associated with a specific line in the markdown, ensuring your feedback is always in context.
 
-<img src="./images/review/add-markdown-comment.png" alt="Image demonstrating how to add comments to markdown cells" width="700" />
-
 When a comment is added to markdown, a blue underline will appear. To view the comment and respond, click the markdown or the avatar to the right.
 
-<img src="./images/review/view-markdown-comment.png" alt="Image demonstrating viewing a markdown comment">
-
 You can view markdown diffs in both rendered and raw formats, giving you the option to review the content in the way that works best for you. To learn more see our [settings docs](./settings.md)
+
+<div style="display: flex; justify-content: space-between;">
+  <div style="width: 48%;">
+    <h4>Adding a markdown comment</h4>
+    <img src="./images/review/add-markdown-comment.png" alt="Image demonstrating how to add comments to markdown cells" width="100%">
+  </div>
+  <div style="width: 48%;">
+    <h4>Replying to a markdown comment</h4>
+    <img src="./images/review/view-markdown-comment.png" alt="Image demonstrating viewing a markdown comment" width="100%">
+  </div>
+</div>
 
 ### Notes About Comments
 
@@ -37,9 +52,9 @@ Comments will stay in place as new commits are pushed to the branch.
 
 Comments are automatically marked as outdated if a new commit changes the specific line since the comment was added.
 
-<img src="./images/review/outdated.png" alt="Image showing an outdated review comment" width="700>
+<img src="./images/review/outdated.png" alt="Image showing an outdated review comment" width="700">
 
-## Diffs
+## Viewing Diffs
 
 GitNotebooks supports a variety of diffs to make your review process comprehensive:
 
@@ -91,7 +106,7 @@ Output diffs are useful when reviewing changes in notebook results. This include
   </div>
 </div>
 
-## Pull Request Reviews
+## Submitting a Pull Request Review
 
 To submit your review in GitNotebooks:
 
@@ -102,9 +117,22 @@ To submit your review in GitNotebooks:
 
 After submitting your review, all your comments will be posted to GitHub automatically.
 
-<img src="./images/submit-review.png" alt="Image showing the process of submitting a review in GitNotebooks" width="700" />
+<div style="display: flex; justify-content: space-between;">
+  <div style="width: 48%;">
+    <p>Step 1: Start a review</p>
+    <img src="./images/review/review-first-comment.png" alt="Image showing how to start a review in GitNotebooks" width="100%" />
+  </div>
+  <div style="width: 48%;">
+    <p>Step 2: Add comments</p>
+    <img src="./images/review/review-add-comment.png" alt="Image showing how to add comments during a review in GitNotebooks" width="100%" />
+  </div>
+</div>
+<div style="margin-top: 20px;">
+  <p>Step 3: Submit the review</p>
+  <img src="./images/review/review-submit.png" alt="Image showing how to submit a completed review in GitNotebooks" width="100%" />
+</div>
 
-GitNotebooks maintains synchronization with GitHub:
+## GitHub Synchronization
 
 - Single comments and posted review comments appear in GitHub.
 - Responses to comments made within GitHub are visible in GitNotebooks.
