@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="settings.html"><strong aria-hidden="true">2.</strong> Settings</a></li><li class="chapter-item expanded "><a href="reviewing_a_notebook.html"><strong aria-hidden="true">3.</strong> Reviewing a Notebooks</a></li><li class="chapter-item expanded "><a href="self_hosted.html"><strong aria-hidden="true">4.</strong> Self Hosted</a></li><li class="chapter-item expanded "><a href="enterprise_security.html"><strong aria-hidden="true">5.</strong> Enterprise Security</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="reviewing_a_notebook.html"><strong aria-hidden="true">2.</strong> Reviewing a Notebooks</a></li><li class="chapter-item expanded "><a href="settings.html"><strong aria-hidden="true">3.</strong> Settings</a></li><li class="chapter-item expanded "><a href="self_hosted.html"><strong aria-hidden="true">4.</strong> Self Hosted</a></li><li class="chapter-item expanded "><a href="enterprise_security.html"><strong aria-hidden="true">5.</strong> Enterprise Security</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -215,35 +215,6 @@ GitHub Organization admin to install GitNotebooks or <a href="https://share.hsfo
 <p>Now that you've installed GitNotebooks, you're ready to start reviewing notebooks. Our <a href="./reviewing_a_notebook.html">Reviewing a Notebook</a> guide will walk you through the process, showing you how to open pull requests, and make comments on both code and markdown.</p>
 <h2 id="questions-or-feedback"><a class="header" href="#questions-or-feedback">Questions or Feedback</a></h2>
 <p>We're here to help! If you need support or have any questions, feel free to reach out to us at <code>support@gitnotebooks.com</code>. You can also post an issue to our <a href="https://github.com/GitNotebooks/GitNotebooks/issues">public repository</a> for feature requests or bug reports.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="settings"><a class="header" href="#settings">Settings</a></h1>
-<h2 id="theme-selection"><a class="header" href="#theme-selection">Theme Selection</a></h2>
-<p>GitNotebooks has a dark mode.
-<img src="./images/settings/dark-theme.png" alt="GitNotebooks in dark theme" width="700px"></p>
-<p>To change the theme:</p>
-<ol>
-<li>Sign in</li>
-<li>Select your user avatar on the top right</li>
-<li>Choose a theme</li>
-</ol>
-<img src="./images/settings/theme-selection.png" alt="Theme selection in GitNotebooks" width="400px" />
-<h2 id="notebook-settings"><a class="header" href="#notebook-settings">Notebook Settings</a></h2>
-<p>To access notebook diff settings open the gear icon to the right of the pull request title.</p>
-<img src="./images/settings/settings.png" alt="Settings view for a notebook" width="400px" />
-<p>These settings will apply to all notebook diffs.</p>
-<h3 id="hide-outputs"><a class="header" href="#hide-outputs">Hide Outputs</a></h3>
-<p>Enabling <code>Hide Outputs</code> will collapse all cell outputs.</p>
-<h3 id="collapse-notebooks"><a class="header" href="#collapse-notebooks">Collapse Notebooks</a></h3>
-<p>Enabling <code>Colapse Notebooks</code> will collapse the notebooks by default. This can be helpful if you have a lot of changed notebooks to review and you'd rather see them one at a time.</p>
-<h3 id="raw-markdown"><a class="header" href="#raw-markdown">Raw Markdown</a></h3>
-<p>Enabling <code>Raw Markdown</code> will show the markdown cells in their unrendered format.</p>
-<p>Note that markdown comments will work for both rendered and unrendered markdown comments. If a comment is made to markdown
-in a rendered format they will appear in the unrendered view and vice versa.</p>
-<h3 id="show-entire-notebooks"><a class="header" href="#show-entire-notebooks">Show Entire Notebooks</a></h3>
-<p>Enabling <code>Show Entire Notebook</code> will render the entire notebook, not just the changed cells. By default GitNotebooks will show
-only the cells that have changed with a single cell above and below for context. The change this setting more precisely, see <code>Cells to show around changes</code></p>
-<h3 id="cells-to-show-around-changes"><a class="header" href="#cells-to-show-around-changes">Cells to show around changes</a></h3>
-<p>You can control how many unchanged cells appear above and below a changed cells. If you only want to see changed cells without their surrounding context,
-set <code>Cells to show around changes</code> to <code>0</code>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="reviewing-a-notebook"><a class="header" href="#reviewing-a-notebook">Reviewing a Notebook</a></h1>
 <p>This guide will walk you through the process of reviewing Jupyter notebooks using GitNotebooks. We'll cover how to add comments, understand diffs, and submit reviews.</p>
 <h2 id="viewing-a-notebook-change"><a class="header" href="#viewing-a-notebook-change">Viewing a Notebook Change</a></h2>
@@ -351,6 +322,35 @@ set <code>Cells to show around changes</code> to <code>0</code>.</p>
 <li>Responses to comments made within GitHub are visible in GitNotebooks.</li>
 <li>Conversation threads can be resolved in GitNotebooks, which stays in sync with conversation resolution in GitHub.</li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="settings"><a class="header" href="#settings">Settings</a></h1>
+<h2 id="theme-selection"><a class="header" href="#theme-selection">Theme Selection</a></h2>
+<p>GitNotebooks has a dark mode.
+<img src="./images/settings/dark-theme.png" alt="GitNotebooks in dark theme" width="700px"></p>
+<p>To change the theme:</p>
+<ol>
+<li>Sign in</li>
+<li>Select your user avatar on the top right</li>
+<li>Choose a theme</li>
+</ol>
+<img src="./images/settings/theme-selection.png" alt="Theme selection in GitNotebooks" width="400px" />
+<h2 id="notebook-settings"><a class="header" href="#notebook-settings">Notebook Settings</a></h2>
+<p>To access notebook diff settings open the gear icon to the right of the pull request title.</p>
+<img src="./images/settings/settings.png" alt="Settings view for a notebook" width="400px" />
+<p>These settings will apply to all notebook diffs.</p>
+<h3 id="hide-outputs"><a class="header" href="#hide-outputs">Hide Outputs</a></h3>
+<p>Enabling <code>Hide Outputs</code> will collapse all cell outputs.</p>
+<h3 id="collapse-notebooks"><a class="header" href="#collapse-notebooks">Collapse Notebooks</a></h3>
+<p>Enabling <code>Colapse Notebooks</code> will collapse the notebooks by default. This can be helpful if you have a lot of changed notebooks to review and you'd rather see them one at a time.</p>
+<h3 id="raw-markdown"><a class="header" href="#raw-markdown">Raw Markdown</a></h3>
+<p>Enabling <code>Raw Markdown</code> will show the markdown cells in their unrendered format.</p>
+<p>Note that markdown comments will work for both rendered and unrendered markdown comments. If a comment is made to markdown
+in a rendered format they will appear in the unrendered view and vice versa.</p>
+<h3 id="show-entire-notebooks"><a class="header" href="#show-entire-notebooks">Show Entire Notebooks</a></h3>
+<p>Enabling <code>Show Entire Notebook</code> will render the entire notebook, not just the changed cells. By default GitNotebooks will show
+only the cells that have changed with a single cell above and below for context. The change this setting more precisely, see <code>Cells to show around changes</code></p>
+<h3 id="cells-to-show-around-changes"><a class="header" href="#cells-to-show-around-changes">Cells to show around changes</a></h3>
+<p>You can control how many unchanged cells appear above and below a changed cells. If you only want to see changed cells without their surrounding context,
+set <code>Cells to show around changes</code> to <code>0</code>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="self-hosted"><a class="header" href="#self-hosted">Self Hosted</a></h1>
 <p><em>This tutorial shows how to deploy GitNotebooks Self-Hosted</em></p>
 <h3 id="before-we-start-the-tutorial"><a class="header" href="#before-we-start-the-tutorial">Before we start the tutorial</a></h3>
