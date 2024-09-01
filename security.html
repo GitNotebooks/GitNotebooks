@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Getting Started - GitNotebooks Docs</title>
+        <title>Security - GitNotebooks Docs</title>
 
 
         <!-- Custom HTML head -->
@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="getting_started.html" class="active"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="reviewing_a_notebook.html"><strong aria-hidden="true">2.</strong> Reviewing a Notebooks</a></li><li class="chapter-item expanded "><a href="security.html"><strong aria-hidden="true">3.</strong> Security</a></li><li class="chapter-item expanded "><a href="settings.html"><strong aria-hidden="true">4.</strong> Settings</a></li><li class="chapter-item expanded "><a href="self_hosted.html"><strong aria-hidden="true">5.</strong> Self Hosted</a></li><li class="chapter-item expanded "><a href="enterprise_security.html"><strong aria-hidden="true">6.</strong> Enterprise Security</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="reviewing_a_notebook.html"><strong aria-hidden="true">2.</strong> Reviewing a Notebooks</a></li><li class="chapter-item expanded "><a href="security.html" class="active"><strong aria-hidden="true">3.</strong> Security</a></li><li class="chapter-item expanded "><a href="settings.html"><strong aria-hidden="true">4.</strong> Settings</a></li><li class="chapter-item expanded "><a href="self_hosted.html"><strong aria-hidden="true">5.</strong> Self Hosted</a></li><li class="chapter-item expanded "><a href="enterprise_security.html"><strong aria-hidden="true">6.</strong> Enterprise Security</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -176,51 +176,55 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h1>
-<p>Welcome to GitNotebooks! Before diving into the installation process, we recommend checking out our demo pull request. This allows you to try GitNotebooks without setting up a repository or installing the app.
-👉 <a href="https://app.gitnotebooks.com/GitNotebooks/demo/pull/1" target="_blank">Try our demo pull request</a></p>
-<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
-<p>Getting GitNotebooks up and running is quick and easy. Follow these simple steps:</p>
-<ol>
-<li>Sign in to the <a href="https://app.gitnotebooks.com/dashboard">GitNotebooks dashboard</a></li>
-<li>Click <code>Add Repo</code></li>
-<li>Select the repositories</li>
-</ol>
-<div style="display: flex; justify-content: space-between; align-items: center;">
-  <div style="text-align: center; width: 23%;">
-    <p>Sign in</p>
-    <img src="./images/getting-started/sign-in-button.png" alt="Sign in to GitNotebooks" style="width: 100%;">
-  </div>
-  <div style="text-align: center; width: 23%;">
-    <p>Add Repo</p>
-    <img src="./images/getting-started/add-repos.png" alt="Add Repo to GitNotebooks" style="width: 100%;">
-  </div>
-  <div style="text-align: center; width: 23%;">
-    <p>Select Repos</p>
-    <img src="./images/getting-started/select-repos.png" alt="Select repositories" style="width: 100%;">
-  </div>
-  <div style="text-align: center; width: 23%;">
-    <p>Start Reviewing</p>
-    <img src="./images/getting-started/repo-list.png" alt="Start reviewing notebooks" style="width: 100%;">
-  </div>
-</div>
-<p>The entire process takes about a minute!</p>
-<div class="warning">
-<p>Can't install GitNotebooks in your GitHub Organization?</p>
-<p>You may not have the required permissions to install GitNotebooks. You can ask your
-GitHub Organization admin to install GitNotebooks or <a href="https://share.hsforms.com/1KcFTS0dHRPqyMli5Dr8kiwryqe1">request a self-hosted version</a>.</p>
-</div>
-<h2 id="review-a-notebook"><a class="header" href="#review-a-notebook">Review a Notebook</a></h2>
-<p>Now that you've installed GitNotebooks, you're ready to start reviewing notebooks. Our <a href="./reviewing_a_notebook.html">Reviewing a Notebook</a> guide will walk you through the process, showing you how to open pull requests, and make comments on both code and markdown.</p>
-<h2 id="questions-or-feedback"><a class="header" href="#questions-or-feedback">Questions or Feedback</a></h2>
-<p>We're here to help! If you need support or have any questions, feel free to reach out to us at <code>support@gitnotebooks.com</code>. You can also post an issue to our <a href="https://github.com/GitNotebooks/GitNotebooks/issues">public repository</a> for feature requests or bug reports.</p>
+                        <h1 id="security"><a class="header" href="#security">Security</a></h1>
+<p>At GitNotebooks, we take the security of your data and code seriously. This document outlines our security practices and explains the permissions we request.</p>
+<h2 id="your-code-stays-private"><a class="header" href="#your-code-stays-private">Your Code Stays Private</a></h2>
+<p><strong>Your code never touches our servers.</strong> Here's how it works:</p>
+<ul>
+<li>All files are fetched directly from GitHub to your browser</li>
+<li>Diffs and comparisons are performed client-side in your browser</li>
+<li>We do not fetch, store, or process your code on our servers</li>
+</ul>
+<h2 id="github-permissions"><a class="header" href="#github-permissions">GitHub Permissions</a></h2>
+<p>We request certain GitHub permissions to provide GitNotebooks functionality. Here's why we need each permission:</p>
+<h3 id="repository-read"><a class="header" href="#repository-read">Repository (Read)</a></h3>
+<p>We require read access to your repositories to:</p>
+<ul>
+<li>Generate access tokens that allow your browser to fetch pull request files directly from GitHub</li>
+<li>Enable viewing and diffing of code within GitNotebooks</li>
+</ul>
+<h3 id="repository-write"><a class="header" href="#repository-write">Repository (Write)</a></h3>
+<p>We request write access solely to enable resolving conversations in pull requests. We never write to your repositories for any other purpose.</p>
+<p><strong>Note:</strong> We're actively tracking <a href="https://github.com/orgs/community/discussions/12961">GitHub's progress</a> on creating a separate, more limited permission for this functionality.</p>
+<h3 id="pull-request-write"><a class="header" href="#pull-request-write">Pull Request (Write)</a></h3>
+<p>This permission allows GitNotebooks to:</p>
+<ul>
+<li>Post comments on pull requests</li>
+<li>Submit reviews</li>
+</ul>
+<h3 id="metadata-read"><a class="header" href="#metadata-read">Metadata (Read)</a></h3>
+<p>We use this to:</p>
+<ul>
+<li>Fetch pull request information (e.g., who opened it, current status)</li>
+<li>Display relevant context within GitNotebooks</li>
+</ul>
+<h2 id="our-commitment"><a class="header" href="#our-commitment">Our Commitment</a></h2>
+<ul>
+<li>We have no desire or intention to write to your repositories beyond the specific, limited use case of resolving conversations.</li>
+<li>We are developers too, and we treat your code with the same care and respect we would want for our own projects.</li>
+</ul>
+<h2 id="questions-or-concerns"><a class="header" href="#questions-or-concerns">Questions or Concerns?</a></h2>
+<p>If you have any questions about our security practices or the permissions we request, please don't hesitate to contact us at <code>support@gitnotebooks.com</code>.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="reviewing_a_notebook.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
-                            <a rel="next prefetch" href="reviewing_a_notebook.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="settings.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -230,8 +234,11 @@ GitHub Organization admin to install GitNotebooks or <a href="https://share.hsfo
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="reviewing_a_notebook.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
-                    <a rel="next prefetch" href="reviewing_a_notebook.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="settings.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
