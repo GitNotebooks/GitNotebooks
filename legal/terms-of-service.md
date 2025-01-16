@@ -173,13 +173,12 @@ We’re always trying to improve our products and services, and Your feedback wi
 
 ### 1. Pricing
 
-Our pricing and payment terms are available at [gitnotebooks.com/subscribe](https://gitnotebooks.com/subscribe). If You agree to a subscription price, that will remain Your price for the duration of the payment term; however, prices are subject to change at the end of a payment term.
+Our pricing and payment terms are available at [gitnotebooks.com/pricing](https://gitnotebooks.com/pricing). If You agree to a subscription price, that will remain Your price for the duration of the payment term; however, prices are subject to change at the end of a payment term.
 
 ### 2. Upgrades, Downgrades, and Changes
 
 - We will immediately bill You when You upgrade from the free plan to any paying plan.
 - If You change from a monthly billing plan to a yearly billing plan or vice-versa, or upgrade to a higher level of service, We will bill You for Your new plan immediately. However, We will credit any unused funds from Your previous plan towards Your new plan.
-- You may change Your level of service at any time by going into Your Account's subscription settings. If You choose to downgrade Your Account, You may lose access to Content, features, or capacity of Your Account.
 
 ### 3. Billing Schedule; No Refunds
 
