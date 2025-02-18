@@ -74,7 +74,7 @@ The following diagrams illustrate the two primary workflows of GitNotebooks
 
 **Does the self-hosted application send any network requests to GitNotebooks?**
 
-No, self-hosted installations do not make any network requests except to GitHub. If hosting GitHub Enterprise Server, all network traffic remains within your VPN. It is recommended that you restrict network requests from the application server to your GitHub Enterprise Cloud environment if using GitHub Enterprise Cloud.
+Yes, as of version `1.1.0` self-hosted installations make a network request once per day to our license server to ensure that the customer has an authorized installation of GitNotebooks.
 
 **Does GitNotebooks have access to any Self Hosted data?**
 
