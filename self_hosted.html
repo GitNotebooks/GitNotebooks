@@ -199,6 +199,7 @@ GITHUB_CLIENT_ID=Iv1.fed2b15afabbc1a6
 DATABASE_URL=postgresql://postgres:somepassword@git-notebooks.database.url.rds.amazonaws.com:5432/postgres
 AES_ENCRYPTION_KEY=X9CSf8y7Pw9dYSJNUwV4L7jUqH42/Mb27pHBRTUWceI=
 ENTERPRISE=true
+LICENSE_KEY=eg7d1aba4ddb88f2ec16711d96a25d0c03
 </code></pre>
 <p>In this tutorial, we'll denote environment variables with this notation: <code>SOME_ENV_VAR</code></p>
 <p>Once the environment variables are set correctly, you can run the GitNotebooks container. Here's an example using Docker:</p>
@@ -289,6 +290,9 @@ DATABASE_URL=postgresql://postgres:somepassword@git-notebooks.database.url.rds.a
 
 # Generate this value using `openssl rand -base64 32`
 AES_ENCRYPTION_KEY=X9CSf8y7Pw9dYSJNUwV4L7jUqH42/Mb27pHBRTUWceI=
+
+# License keys are provided by GitNotebooks
+LICENSE_KEY=eg7d1aba4ddb88f2ec16711d96a25d0c03
 
 ENTERPRISE=true
 </code></pre>
