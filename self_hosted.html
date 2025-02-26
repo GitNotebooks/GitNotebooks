@@ -189,7 +189,7 @@
 </ul>
 <p>The goal is to create a set of environment variables that look like this:</p>
 <pre><code class="language-bash">BASE_URL=https://gitnotebooks.mycompany.com
-GITHUB_BASE_URL=https://github.mycompany.com
+GITHUB_BASE_URL=https://github.mycompany.com/api/v3
 GITHUB_APP_IDENTIFIER=499732
 GITHUB_CLIENT_SECRET=0f2e9190d598624847d2b259b5b567cf981d5072
 GITHUB_PRIVATE_KEY=LS0tLS12dJQkFNB2s3emt2dBS0nRzbXQzVCRUdJUUVBc2pzNFRSb0ErUVdWdMbFZUeklyQmtkYkZFURSBTXZiZnlqQW9FHU0EgUFJJVk1YWZWUGxaV1NOKUTiBSbNi9HOUTV0YLRVktLS0tLQpCg==
@@ -282,8 +282,9 @@ GITHUB_PRIVATE_KEY=LS0tLS12dJQkFNB2s3emt2dBS0nRzbXQzVCRUdJUUVBc2pzNFRSb0ErUVdWdM
 GITHUB_WEBHOOK_SECRET=d1ae70aaf90bd909ce44927350d9aba8c1136d34
 GITHUB_APP_URL=https://github.mycompany.com/apps/gitnotebooks-self-hosted
 
-# Base URL of your GitHub instance, if you are not self-hosting GitHub, simply use https://github.com
-GITHUB_BASE_URL=https://github.com
+# Base URL of your GitHub API. If you are not self-hosting GitHub, simply use https://api.github.com
+# If you are using GitHub Enterprise Server use https://mycompany.github.com/api/v3
+GITHUB_BASE_URL=https://api.github.com
 
 # From `Creating a database`
 DATABASE_URL=postgresql://postgres:somepassword@git-notebooks.database.url.rds.amazonaws.com:5432/postgres
