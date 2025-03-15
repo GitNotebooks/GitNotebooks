@@ -1,0 +1,24 @@
+# Self Hosted Release Notes
+
+---
+
+## gitnotebooks/self-hosted:1.2.1
+
+- **Features**
+  - Bi-directional comment syncing between GitHub and GitNotebooks. If a comment is posted in GitNotebooks, it will be cross-posted to the corresponding JSON line in GitHub. If a comment is posted in GitHub, it will be shown in the corresponding rendered notebook line. Syncs comment edit and delete as well
+  - Ability to "Add suggestion" to a notebook or code file and then apply the change within GitHub
+  - Added a repo file explorer similar to a repo's home page in GitHub to allow notebook reviewers to quickly check python modules referenced from a notebook
+  - Log more events and improved readability of server logs: `INFO`, `WARN`, `ERROR`, instead of `30`, `40`, `50`
+  - View self hosted license information from the app home page: number of seats, expiration, license type
+- **Bug Fixes**
+
+  - File renames are now handled better. Comments used to disappear if they were posted to a renamed file and then a subsequent change was pushed to that notebook. This, and other edge cases related to rename behavior, has been fixed
+
+> **Required Changes:** In order to upgrade to version 1.2.1 there are three requirements
+>
+> 1. Set a new environment variables `LICENSE_KEY`
+> 2. Allow egress from the GitNotebooks service to https://license.gitnotebooks.com
+> 3. Modify the GitNotebooks GitHub App to subcribe to the following events
+>    - Pull request review
+>    - Pull request review comment
+>    - Pull request review threadPull request thread comment

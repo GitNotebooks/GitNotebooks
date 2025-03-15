@@ -1,4 +1,4 @@
-# Self Hosted
+# Self Hosted Deployment Guide
 
 _This tutorial shows how to deploy GitNotebooks Self-Hosted_
 
@@ -78,6 +78,9 @@ You should now have a GitHub App with the following settings:
   - Email address: `Read only`
 - Subscribe to events:
   - Pull request
+  - Pull request review
+  - Pull request review comment
+  - Pull request review thread
 
 ### After creating the GitHub App
 
