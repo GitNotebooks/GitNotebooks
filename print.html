@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="reviewing_a_notebook.html"><strong aria-hidden="true">2.</strong> Reviewing a Notebooks</a></li><li class="chapter-item expanded "><a href="security.html"><strong aria-hidden="true">3.</strong> Security</a></li><li class="chapter-item expanded "><a href="settings.html"><strong aria-hidden="true">4.</strong> Settings</a></li><li class="chapter-item expanded "><a href="self_hosted.html"><strong aria-hidden="true">5.</strong> Self Hosted</a></li><li class="chapter-item expanded "><a href="enterprise_security.html"><strong aria-hidden="true">6.</strong> Enterprise Security</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="reviewing_a_notebook.html"><strong aria-hidden="true">2.</strong> Reviewing a Notebooks</a></li><li class="chapter-item expanded "><a href="security.html"><strong aria-hidden="true">3.</strong> Security</a></li><li class="chapter-item expanded "><a href="settings.html"><strong aria-hidden="true">4.</strong> Settings</a></li><li class="chapter-item expanded "><a href="self_hosted.html"><strong aria-hidden="true">5.</strong> Self Hosted</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="self_hosted.html"><strong aria-hidden="true">5.1.</strong> Deployment Guide</a></li><li class="chapter-item expanded "><a href="self_hosted_release_notes.html"><strong aria-hidden="true">5.2.</strong> Release Notes</a></li></ol></li><li class="chapter-item expanded "><a href="enterprise_security.html"><strong aria-hidden="true">6.</strong> Enterprise Security</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -396,7 +396,7 @@ only the cells that have changed with a single cell above and below for context.
 <h3 id="cells-to-show-around-changes"><a class="header" href="#cells-to-show-around-changes">Cells to show around changes</a></h3>
 <p>You can control how many unchanged cells appear above and below a changed cells. If you only want to see changed cells without their surrounding context,
 set <code>Cells to show around changes</code> to <code>0</code>.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="self-hosted"><a class="header" href="#self-hosted">Self Hosted</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="self-hosted-deployment-guide"><a class="header" href="#self-hosted-deployment-guide">Self Hosted Deployment Guide</a></h1>
 <p><em>This tutorial shows how to deploy GitNotebooks Self-Hosted</em></p>
 <h3 id="before-we-start-the-tutorial"><a class="header" href="#before-we-start-the-tutorial">Before we start the tutorial</a></h3>
 <p>The tutorial is divided into several sections:</p>
@@ -459,6 +459,9 @@ Here’s how to fill out the form:</p>
 <li>Subscribe to events:
 <ul>
 <li>Pull request</li>
+<li>Pull request review</li>
+<li>Pull request review comment</li>
+<li>Pull request review thread</li>
 </ul>
 </li>
 </ul>
@@ -553,6 +556,201 @@ ENTERPRISE=true
 </ul>
 </li>
 </ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="self-hosted-deployment-guide-1"><a class="header" href="#self-hosted-deployment-guide-1">Self Hosted Deployment Guide</a></h1>
+<p><em>This tutorial shows how to deploy GitNotebooks Self-Hosted</em></p>
+<h3 id="before-we-start-the-tutorial-1"><a class="header" href="#before-we-start-the-tutorial-1">Before we start the tutorial</a></h3>
+<p>The tutorial is divided into several sections:</p>
+<ul>
+<li><a href="self_hosted.html#choosing-an-endpoint">Choosing an Endpoint</a></li>
+<li><a href="self_hosted.html#creating-a-github-app">Creating a GitHub App</a></li>
+<li><a href="self_hosted.html#creating-a-database">Creating a Database</a></li>
+<li><a href="self_hosted.html#reviewing-environment-variables">Reviewing the Environment Variables</a></li>
+<li><a href="self_hosted.html#deploy-container">Deploy container</a></li>
+</ul>
+<p>The goal is to create a set of environment variables that look like this:</p>
+<pre><code class="language-bash">BASE_URL=https://gitnotebooks.mycompany.com
+GITHUB_BASE_URL=https://github.mycompany.com/api/v3
+GITHUB_APP_IDENTIFIER=499732
+GITHUB_CLIENT_SECRET=0f2e9190d598624847d2b259b5b567cf981d5072
+GITHUB_PRIVATE_KEY=LS0tLS12dJQkFNB2s3emt2dBS0nRzbXQzVCRUdJUUVBc2pzNFRSb0ErUVdWdMbFZUeklyQmtkYkZFURSBTXZiZnlqQW9FHU0EgUFJJVk1YWZWUGxaV1NOKUTiBSbNi9HOUTV0YLRVktLS0tLQpCg==
+GITHUB_WEBHOOK_SECRET=d1ae70aaf90bd909ce44927350d9aba8c1136d34
+GITHUB_APP_URL=https://github.mycompany.com/apps/gitnotebooks-self-hosted
+GITHUB_CLIENT_ID=Iv1.fed2b15afabbc1a6
+DATABASE_URL=postgresql://postgres:somepassword@git-notebooks.database.url.rds.amazonaws.com:5432/postgres
+AES_ENCRYPTION_KEY=X9CSf8y7Pw9dYSJNUwV4L7jUqH42/Mb27pHBRTUWceI=
+ENTERPRISE=true
+LICENSE_KEY=eg7d1aba4ddb88f2ec16711d96a25d0c03
+</code></pre>
+<p>In this tutorial, we'll denote environment variables with this notation: <code>SOME_ENV_VAR</code></p>
+<p>Once the environment variables are set correctly, you can run the GitNotebooks container. Here's an example using Docker:</p>
+<pre><code class="language-bash">docker run -p 80:3000 --env-file .env gitnotebooks/self-hosted:1.0.0
+</code></pre>
+<h3 id="prerequisites-1"><a class="header" href="#prerequisites-1">Prerequisites</a></h3>
+<p>We'll assume that you have enough permission to create a new GitHub app and a Postgres database. We'll also assume that you have access to the private GitNotebooks container image.</p>
+<p>If you have not yet received the GitNotebooks container image, you can do so by filling out this form: <a href="https://share.hsforms.com/1KcFTS0dHRPqyMli5Dr8kiwryqe1">Self-hosted signup</a></p>
+<h2 id="choosing-an-endpoint"><a class="header" href="#choosing-an-endpoint">Choosing an Endpoint</a></h2>
+<p>The GitNotebooks web application needs to be accessible via a URL. This URL will be referred to as the <code>BASE_URL</code> throughout the setup process. You'll need to decide on this <code>BASE_URL</code> before proceeding.</p>
+<p>The <code>BASE_URL</code> will be used as an environment variable in your configuration. For example, it might look like:</p>
+<pre><code class="language-bash">BASE_URL="https://gitnotebooks.yourcompanydomain.com"
+</code></pre>
+<h2 id="creating-a-github-app"><a class="header" href="#creating-a-github-app">Creating a GitHub App</a></h2>
+<p>First, navigate to your GitHub Organization &gt; Settings &gt; Developer Settings &gt; GitHub Apps &gt; New GitHub App. If you need help finding this button, the GitHub docs can help: <a href="https://docs.github.com/en/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/registering-a-github-app">Registering a GitHub App</a>
+Here’s how to fill out the form:</p>
+<img alt="register GitNotebooks GitHub App 1" src="images/gh-app-1.png" width="500px" />
+<img alt="register GitNotebooks GitHub App 2" src="images/gh-app-2.png" width="500px" />
+<img alt="register GitNotebooks GitHub App 3" src="images/gh-app-3.png" width="500px" />
+<img alt="register GitNotebooks GitHub App 4" src="images/gh-app-4.png" width="500px" />
+<img alt="register GitNotebooks GitHub App 5" src="images/gh-app-5.png" width="500px" />
+<p>You should now have a GitHub App with the following settings:</p>
+<ul>
+<li>GitHub App Name: <code>GitNotebooks</code></li>
+<li>Homepage URL: <code>https://gitnotebook.com</code></li>
+<li>Callback URL: <code>https://gitnotebooks.your-domain.com/api/auth/callback/github</code></li>
+<li>Post installation: <code>https://gitnotebooks.your-domain.com/dashboard</code></li>
+<li>Webhook URL: <code>https://gitnotebooks.your-domain.com/api/event_handler</code></li>
+<li>Webhook secret: A custom webhook seceret</li>
+<li>Permissions
+<ul>
+<li>Contents: <code>Read and write</code></li>
+<li>Pull requests: <code>Read and write</code></li>
+<li>Email address: <code>Read only</code></li>
+</ul>
+</li>
+<li>Subscribe to events:
+<ul>
+<li>Pull request</li>
+<li>Pull request review</li>
+<li>Pull request review comment</li>
+<li>Pull request review thread</li>
+</ul>
+</li>
+</ul>
+<h3 id="after-creating-the-github-app-1"><a class="header" href="#after-creating-the-github-app-1">After creating the GitHub App</a></h3>
+<p>We'll need to collect some information for GitNotebooks to identify itself as the GitHub App.</p>
+<p><strong>Generate a new client secret <code>GITHUB_CLIENT_SECRET</code></strong></p>
+<img alt="generate client secret" src="images/gh-app-client-secrets.png" width="300px" />
+<p><strong>Generate a private key</strong>
+We will download the key, then convert it to base64.</p>
+<img alt="download private key for GitHub App" src="images/gh-app-private-key.png" width="300px" />
+<p>Convert the key to base64.</p>
+<pre><code class="language-bash">cat path/to/your/key.pem | base64
+</code></pre>
+<p><strong>Note the url of the public page <code>GITHUB_APP_URL</code></strong></p>
+<p>This URL is used to direct users to add repos to the GitHub app installation.</p>
+<img src="images/public-url.png" alt="public url link for GitHub App" width="200"/>
+<h3 id="making-it-pretty-optional-1"><a class="header" href="#making-it-pretty-optional-1">Making it pretty (optional)</a></h3>
+<p>Finally, you can upload a <a href="images/logo.png">logo</a> which is used as the app's avatar.</p>
+<h2 id="creating-a-database"><a class="header" href="#creating-a-database">Creating a database</a></h2>
+<p>Next, we need a Postgres database with the following specifications:</p>
+<ul>
+<li>1GB RAM</li>
+<li>20GiB storage</li>
+<li>PostgreSQL 9.4 or higher</li>
+<li>Username/Password authentication</li>
+</ul>
+<p><em>We recommend that your database not be accessible to the internet, and restrict inbound connections to the web servers hosting the container over TCP port 5432.</em></p>
+<p>Note the connection string, which is the <code>DATABASE_URL</code></p>
+<pre><code class="language-bash">DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
+</code></pre>
+<h2 id="reviewing-environment-variables"><a class="header" href="#reviewing-environment-variables">Reviewing the Environment Variables</a></h2>
+<p>We should have all the environment variables we need:</p>
+<pre><code class="language-bash"># From `Choosing and Endpoint`
+BASE_URL=https://gitnotebooks.mycompany.com
+
+# From `Creating a GitHub App`
+GITHUB_APP_IDENTIFIER=499732
+GITHUB_CLIENT_ID=Iv1.fed2b15afabbc1a6
+GITHUB_CLIENT_SECRET=0f2e9190d598624847d2b259b5b567cf981d5072
+GITHUB_PRIVATE_KEY=LS0tLS12dJQkFNB2s3emt2dBS0nRzbXQzVCRUdJUUVBc2pzNFRSb0ErUVdWdMbFZUeklyQmtkYkZFURSBTXZiZnlqQW9FHU0EgUFJJVk1YWZWUGxaV1NOKUTiBSbNi9HOUTV0YLRVktLS0tLQpCg==
+GITHUB_WEBHOOK_SECRET=d1ae70aaf90bd909ce44927350d9aba8c1136d34
+GITHUB_APP_URL=https://github.mycompany.com/apps/gitnotebooks-self-hosted
+
+# Base URL of your GitHub API. If you are not self-hosting GitHub, simply use https://api.github.com
+# If you are using GitHub Enterprise Server use https://mycompany.github.com/api/v3
+GITHUB_BASE_URL=https://api.github.com
+
+# From `Creating a database`
+DATABASE_URL=postgresql://postgres:somepassword@git-notebooks.database.url.rds.amazonaws.com:5432/postgres
+
+# Generate this value using `openssl rand -base64 32`
+AES_ENCRYPTION_KEY=X9CSf8y7Pw9dYSJNUwV4L7jUqH42/Mb27pHBRTUWceI=
+
+# License keys are provided by GitNotebooks
+LICENSE_KEY=eg7d1aba4ddb88f2ec16711d96a25d0c03
+
+ENTERPRISE=true
+</code></pre>
+<p>You are now ready to deploy GitNotebooks Self-Hosted.</p>
+<h2 id="deploy-container"><a class="header" href="#deploy-container">Deploying the GitNotebooks Container</a></h2>
+<p>The final step is to deploy the GitNotebooks container image with the environment variables we've prepared. Here are some key points to consider:</p>
+<ul>
+<li>The container image serves traffic over port 3000, which should be mapped to port 80 on the host.</li>
+<li>A health check endpoint is available at <code>/api/health</code>. This endpoint verifies the web application's connection to the database and confirms that the environment variables are properly set.</li>
+</ul>
+<p>To deploy the container, use your preferred container orchestration platform (e.g., ECS, Kubernetes) and ensure that the necessary port mapping and environment variables are configured.</p>
+<h2 id="security-recommendations"><a class="header" href="#security-recommendations">Security Recommendations</a></h2>
+<p>While GitNotebooks Self-Hosted only makes network requests to GitHub, we recommend implementing the following security measures:</p>
+<ol>
+<li>
+<p>Web application servers:</p>
+<ul>
+<li>Store container environment variables as secrets (e.g., using AWS Secrets Manager)</li>
+<li>Restrict outbound network traffic to GitHub and the database</li>
+<li>Limit inbound traffic to your corporate VPN</li>
+</ul>
+</li>
+<li>
+<p>Database:</p>
+<ul>
+<li>Implement encryption at rest</li>
+<li>Require SSL connections from the web server</li>
+<li>Restrict inbound connections to web servers via TCP port 5432</li>
+<li>Disable all outbound network requests</li>
+</ul>
+</li>
+<li>
+<p>Application load balancer:</p>
+<ul>
+<li>Limit inbound requests to your corporate VPN and GitHub Webhooks</li>
+<li>Restrict outbound requests to the web application</li>
+</ul>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="self-hosted-release-notes"><a class="header" href="#self-hosted-release-notes">Self Hosted Release Notes</a></h1>
+<hr />
+<h2 id="gitnotebooksself-hosted121"><a class="header" href="#gitnotebooksself-hosted121">gitnotebooks/self-hosted:1.2.1</a></h2>
+<ul>
+<li>
+<p><strong>Features</strong></p>
+<ul>
+<li>Bi-directional comment syncing between GitHub and GitNotebooks. If a comment is posted in GitNotebooks, it will be cross-posted to the corresponding JSON line in GitHub. If a comment is posted in GitHub, it will be shown in the corresponding rendered notebook line. Syncs comment edit and delete as well</li>
+<li>Ability to "Add suggestion" to a notebook or code file and then apply the change within GitHub</li>
+<li>Added a repo file explorer similar to a repo's home page in GitHub to allow notebook reviewers to quickly check python modules referenced from a notebook</li>
+<li>Log more events and improved readability of server logs: <code>INFO</code>, <code>WARN</code>, <code>ERROR</code>, instead of <code>30</code>, <code>40</code>, <code>50</code></li>
+<li>View self hosted license information from the app home page: number of seats, expiration, license type</li>
+</ul>
+</li>
+<li>
+<p><strong>Bug Fixes</strong></p>
+<ul>
+<li>File renames are now handled better. Comments used to disappear if they were posted to a renamed file and then a subsequent change was pushed to that notebook. This, and other edge cases related to rename behavior, has been fixed</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>Required Changes:</strong> In order to upgrade to version 1.2.1 there are three requirements</p>
+<ol>
+<li>Set a new environment variables <code>LICENSE_KEY</code></li>
+<li>Allow egress from the GitNotebooks service to https://license.gitnotebooks.com</li>
+<li>Modify the GitNotebooks GitHub App to subcribe to the following events
+<ul>
+<li>Pull request review</li>
+<li>Pull request review comment</li>
+<li>Pull request review threadPull request thread comment</li>
+</ul>
+</li>
+</ol>
+</blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="gitnotebooks-enterprise-security"><a class="header" href="#gitnotebooks-enterprise-security">GitNotebooks Enterprise Security</a></h1>
 <p>This page offers an overview of GitNotebooks security-related features. Note that while there are many ways to configure GitNotebooks we'll only discuss the most secure configuration here.</p>
 <p>Everything on this page applies to both self-hosted and managed Enterprise instances. A managed instance is just a self-hosted instance that we run for you (outside your VPN), configured as follows:</p>
