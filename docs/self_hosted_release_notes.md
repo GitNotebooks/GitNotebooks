@@ -18,7 +18,7 @@
 >
 > 1. Set a new environment variables `LICENSE_KEY`
 > 2. Allow egress from the GitNotebooks service to https://license.gitnotebooks.com
-> 3. Set the 'GITHUB_BASE_URL' to the url of the GitHub API e.g. 'https://api.github.com'
+> 3. Set the `GITHUB_BASE_URL` to the url of the GitHub API e.g. `https://api.github.com`
 > 4. Modify the GitNotebooks GitHub App to subcribe to the following events
 >    - Pull request review
 >    - Pull request review comment
