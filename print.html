@@ -742,7 +742,7 @@ ENTERPRISE=true
 <ol>
 <li>Set a new environment variables <code>LICENSE_KEY</code></li>
 <li>Allow egress from the GitNotebooks service to https://license.gitnotebooks.com</li>
-<li>Set the <code>GITHUB_BASE_URL</code> to the url of the GitHub API e.g. <code>https://api.github.com</code></li>
+<li>Set the <code>GITHUB_BASE_URL</code> to the url of the GitHub API e.g. <code>https://api.github.com</code> for GitHub Enterprise Cloud. For GitHub Enterprise Server use <code>https://${CUSTOM_GITHUB_DOMAIN}/api/v3</code></li>
 <li>Modify the GitNotebooks GitHub App to subcribe to the following events
 <ul>
 <li>Pull request review</li>
