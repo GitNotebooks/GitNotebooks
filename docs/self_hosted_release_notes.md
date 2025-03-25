@@ -14,7 +14,7 @@
 
   - File renames are now handled better. Comments used to disappear if they were posted to a renamed file and then a subsequent change was pushed to that notebook. This, and other edge cases related to rename behavior, has been fixed
 
-> **Required Changes:** In order to upgrade to version 1.2.1 there are three requirements
+> **Required Changes:** In order to upgrade to version 1.2.1 there are four requirements
 >
 > 1. Set a new environment variables `LICENSE_KEY`
 > 2. Allow egress from the GitNotebooks service to https://license.gitnotebooks.com
