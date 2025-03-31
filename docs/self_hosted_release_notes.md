@@ -2,6 +2,16 @@
 
 ---
 
+## gitnotebooks/self-hosted:1.2.2
+
+- **Features**
+  - Added a new environment variable `USE_INITIALS_FOR_AVATARS`. When set to `true`, the app will not use GitHub avatars. Instead, it will create initials using the GitHub username and assign a randomized background color. This feature was added to address a [much](https://github.com/orgs/community/discussions/135891) [discussed](https://github.com/Reviewable/Reviewable/issues/770) shortcoming of the GitHub Enterprise Server API which breaks user avatar links.
+    ![Screenshot of user initials used as avatars](./images/initials-example.png)
+- **Security**
+  - Upgraded Next.js to `15.2.3` to patch a [middleware bypass vulnerability](https://nextjs.org/blog/cve-2025-29927). GitNotebooks was not affected by this vulnerability, but we may use middleware in the future.
+
+---
+
 ## gitnotebooks/self-hosted:1.2.1
 
 - **Features**
