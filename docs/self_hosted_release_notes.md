@@ -2,6 +2,13 @@
 
 ---
 
+## gitnotebooks/self-hosted:1.2.3
+
+- **Bug Fixes**
+  - Fixed an issue with reply comments. If someone replied to a comment within GitNotebooks on a file that's not a Jupyter Notebook, the parent comment's text would be used for the comment body rather than the comment typed out by the user.
+
+---
+
 ## gitnotebooks/self-hosted:1.2.2
 
 - **Features**
