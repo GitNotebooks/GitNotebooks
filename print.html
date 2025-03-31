@@ -718,6 +718,21 @@ ENTERPRISE=true
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="self-hosted-release-notes"><a class="header" href="#self-hosted-release-notes">Self Hosted Release Notes</a></h1>
 <hr />
+<h2 id="gitnotebooksself-hosted122"><a class="header" href="#gitnotebooksself-hosted122">gitnotebooks/self-hosted:1.2.2</a></h2>
+<ul>
+<li><strong>Features</strong>
+<ul>
+<li>Added a new environment variable <code>USE_INITIALS_FOR_AVATARS</code>. When set to <code>true</code>, the app will not use GitHub avatars. Instead, it will create initials using the GitHub username and assign a randomized background color. This feature was added to address a <a href="https://github.com/orgs/community/discussions/135891">much</a> <a href="https://github.com/Reviewable/Reviewable/issues/770">discussed</a> shortcoming of the GitHub Enterprise Server API which breaks user avatar links.
+<img src="./images/initials-example.png" alt="Screenshot of user initials used as avatars" /></li>
+</ul>
+</li>
+<li><strong>Security</strong>
+<ul>
+<li>Upgraded Next.js to <code>15.2.3</code> to patch a <a href="https://nextjs.org/blog/cve-2025-29927">middleware bypass vulnerability</a>. GitNotebooks was not affected by this vulnerability, but we may use middleware in the future.</li>
+</ul>
+</li>
+</ul>
+<hr />
 <h2 id="gitnotebooksself-hosted121"><a class="header" href="#gitnotebooksself-hosted121">gitnotebooks/self-hosted:1.2.1</a></h2>
 <ul>
 <li>
