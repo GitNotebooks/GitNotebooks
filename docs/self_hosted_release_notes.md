@@ -2,6 +2,13 @@
 
 ---
 
+## gitnotebooks/self-hosted:1.2.4
+
+- **Bug Fixes**
+  - Improved license check to reduce the amount of phone home requests made, and lessen the CPU usage for these license checks
+
+---
+
 ## gitnotebooks/self-hosted:1.2.3
 
 - **Bug Fixes**
