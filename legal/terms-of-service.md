@@ -157,7 +157,7 @@ GitNotebooks applies the same administrative, technical, and physical safeguards
 The AI Features generate outputs algorithmically and may produce inaccurate or incomplete results. GitNotebooks makes no warranties, express or implied, as to the accuracy, reliability, or fitness for a particular purpose of any AI-generated content. Without limiting Section N, You assume all risk arising from Your reliance on such outputs.
 
 ### 7. Opt-Out
-Organizations may disable the AI Features at any time via the Service settings. Disabling applies prospectively and does not affect data already processed in accordance with this Section T.
+Organizations may disable the AI Features at any time via the Service settings. Disabling applies prospectively and does not affect data already processed in accordance with this Section G.
 
 ### 8. Survival
 The obligations in Sections S.3–S.6 survive any termination of this Agreement to the extent necessary to enforce or give effect to their provisions
