@@ -134,7 +134,35 @@ Without limiting Your rights at law, and subject to any conflicting rights grant
 - copy the Self-Hosted Software, in whole or in part, except that You may make copies of Your data where necessary or prudent for Your internal needs and for business continuity and data security; and
 - allow access to the Self-Hosted Software for a number of Personal Accounts exceeding the limit set by Your subscription.
 
-## G. Copyright Infringement and DMCA Policy
+## G. AI Features
+
+### 1. Overview
+GitNotebooks offers optional artificial-intelligence functionality (the “AI Features”) that analyzes pull-request content and enables contextual chat. By enabling or using any AI Feature, You agree to the additional terms in this Section G, which supplement (and, in case of conflict, supersede) the rest of this Agreement.
+
+### 2. Third-Party Processing
+To provide the AI Features, GitNotebooks transmits relevant portions of a pull request—including code diffs, commit messages, and metadata—to a vetted third-party large-language-model (“LLM”) provider solely for real-time processing. The provider acts as GitNotebooks’s sub-processor under this Agreement and is bound by confidentiality obligations at least as protective as those in Section E.2. GitNotebooks never sells or otherwise commercializes Your Content sent to the LLM provider.
+
+### 3. Data Usage and Storage
+Pull-request analysis. The raw code, diffs, and other User-Generated Content transmitted to the LLM provider are not stored by GitNotebooks after processing. GitNotebooks retains only the non-code outputs returned by the model (e.g., category tags, summaries, or other metadata) necessary to surface the analysis within the Service.
+
+Contextual chat. When You or anyone on Your team initiates an AI chat session on an open pull request, GitNotebooks stores the chat history, the prompts supplied by You, and any repository artifacts fetched via tool calls (such as GitHub Action check results, file contents, or diffs) until the pull request is closed or merged, after which they are deleted within 30 days.
+
+### 4. No Model Training
+Neither GitNotebooks nor the LLM provider will use Your Content—including code, diffs, prompts, or chat messages—to train or fine-tune any machine-learning model.
+
+### 5. Security and Confidentiality
+GitNotebooks applies the same administrative, technical, and physical safeguards described in Section E to all data processed through the AI Features. You remain responsible for ensuring that no confidential or regulated data is submitted to the AI Features unless You have the legal right to do so.
+
+### 6. Disclaimers
+The AI Features generate outputs algorithmically and may produce inaccurate or incomplete results. GitNotebooks makes no warranties, express or implied, as to the accuracy, reliability, or fitness for a particular purpose of any AI-generated content. Without limiting Section N, You assume all risk arising from Your reliance on such outputs.
+
+### 7. Opt-Out
+Organizations may disable the AI Features at any time via the Service settings. Disabling applies prospectively and does not affect data already processed in accordance with this Section G.
+
+### 8. Survival
+The obligations in Sections G.3–G.6 survive any termination of this Agreement to the extent necessary to enforce or give effect to their provisions
+
+## H. Copyright Infringement and DMCA Policy
 
 If You believe that content on our website violates Your copyright, please [contact Us](mailto:legal@gitnotebooks.com) and make sure to include the following:
 
@@ -151,7 +179,7 @@ Please be aware that if You knowingly materially misrepresent that material or a
 
 We will terminate the Accounts of repeat infringers of this policy.
 
-## H. Intellectual Property Notice
+## I. Intellectual Property Notice
 
 ### 1. GitNotebooks's Rights to Content
 
@@ -165,11 +193,11 @@ Our name, our logo, and all related names, logos, product and service names, des
 
 This Agreement is licensed under this [Creative Commons Zero license](https://creativecommons.org/publicdomain/zero/1.0/).
 
-## I. Feedback
+## J. Feedback
 
 We’re always trying to improve our products and services, and Your feedback will help Us do that. If You choose to give Us any ideas, know-how, algorithms, code contributions, suggestions, enhancement requests, recommendations or any other feedback for our products or services (collectively, “Feedback”), You acknowledge and agree that GitNotebooks will have a royalty-free, fully paid-up, worldwide, transferable, sub-licensable, irrevocable and perpetual license to reproduce, prepare derivative works of, distribute, implement, use, modify, commercially exploit and/or incorporate the Feedback into our products, services, and documentation.
 
-## J. Payment
+## K. Payment
 
 ### 1. Pricing
 
@@ -194,7 +222,7 @@ By agreeing to these Terms, You are giving Us permission to charge Your on-file 
 
 You are responsible for all fees, including taxes, associated with Your use of the Service. By using the Service, You agree to pay GitNotebooks any charge incurred in connection with Your use of the Service. If You dispute the matter, contact [GitNotebooks Support](mailto:support@gitnotebooks.com). You are responsible for providing Us with a valid means of payment for paid Accounts. Free Accounts are not required to provide payment information.
 
-## K. Cancellation and Termination
+## L. Cancellation and Termination
 
 ### 1. Account Cancellation
 
@@ -216,7 +244,7 @@ GitNotebooks has the right to suspend or terminate Your access to all or any par
 
 All provisions of this Agreement which, by their nature, should survive termination _will_ survive termination — including, without limitation: ownership provisions, warranty disclaimers, indemnity, and limitations of liability.
 
-## L. Communications with GitNotebooks
+## M. Communications with GitNotebooks
 
 ### 1. Electronic Communication Required
 
@@ -226,7 +254,7 @@ For contractual purposes, You (i) consent to receive communications from Us in a
 
 Communications made through email or GitNotebooks Support's messaging system will not constitute legal notice to GitNotebooks or any of its officers, employees, agents or representatives in any situation where notice to GitNotebooks is required by contract or any law or regulation. Legal notice to GitNotebooks must be in writing and served to our current corporate address on our Website.
 
-## M. Disclaimer of Warranties
+## N. Disclaimer of Warranties
 
 **GitNotebooks provides the Website and the Service “as is” and “as available,” without warranty of any kind. Without limiting this, We expressly disclaim all warranties, whether express, implied or statutory, regarding the Website and the Service including without limitation any warranty of merchantability, fitness for a particular purpose, title, security, accuracy and non-infringement.**
 
@@ -234,7 +262,7 @@ Communications made through email or GitNotebooks Support's messaging system wil
 
 **The foregoing does not affect any warranties which cannot be excluded or limited under applicable law.**
 
-## N. Limitation of Liability
+## O. Limitation of Liability
 
 **To the fullest extent provided by law, You understand and agree that We will not be liable to You or any third party for any loss of profits, use, goodwill, or data, or for any incidental, indirect, special, consequential or exemplary damages, however arising, that result from:**
 
@@ -252,23 +280,23 @@ Communications made through email or GitNotebooks Support's messaging system wil
 
 **Our liability is limited whether or not We have been informed of the possibility of such damages, and even if a remedy set forth in this Agreement is found to have failed of its essential purpose. We will have no liability for any failure or delay due to matters beyond our reasonable control.**
 
-## O. Release and Indemnification
+## P. Release and Indemnification
 
 If You have a dispute with one or more users, You agree to release GitNotebooks from any and all claims, demands and damages (actual and consequential) of every kind and nature, known and unknown, arising out of or in any way connected with such disputes.
 
-You agree to indemnify Us, defend Us, and hold Us and our affiliates, licensors and service providers, and our and their respective officers, directors, employees, contractors, agents, licensors, suppliers, successors and assigns harmless from and against any and all claims, liabilities, damages, judgments, awards, losses, costs, expenses or fees, including attorneys’ fees (collectively, "Losses"), arising out of or relating to Your use of the Website and the Service, including but not limited to Your violation or breach of this Agreement, Your infringement of the intellectual property rights of any third party, Your user contributions, any use of the Website’s content, services, or products other than as expressly authorized in these Terms of Service, or Your use of any information obtained from the Website, provided that GitNotebooks (i) gives You written notice within 90 days after obtaining knowledge of any Losses or discovery of facts on which We intend to base a request for indemnification; and (ii) provides to You all reasonable assistance, at Your expense. You agree to give GitNotebooks prompt written notice of any proposed settlement of a claim that is indemnifiable under this Section O, and You may not, without GitNotebooks's prior written consent, settle or compromise any claim or consent to the entry of any judgment regarding which indemnification is being sought.
+You agree to indemnify Us, defend Us, and hold Us and our affiliates, licensors and service providers, and our and their respective officers, directors, employees, contractors, agents, licensors, suppliers, successors and assigns harmless from and against any and all claims, liabilities, damages, judgments, awards, losses, costs, expenses or fees, including attorneys’ fees (collectively, "Losses"), arising out of or relating to Your use of the Website and the Service, including but not limited to Your violation or breach of this Agreement, Your infringement of the intellectual property rights of any third party, Your user contributions, any use of the Website’s content, services, or products other than as expressly authorized in these Terms of Service, or Your use of any information obtained from the Website, provided that GitNotebooks (i) gives You written notice within 90 days after obtaining knowledge of any Losses or discovery of facts on which We intend to base a request for indemnification; and (ii) provides to You all reasonable assistance, at Your expense. You agree to give GitNotebooks prompt written notice of any proposed settlement of a claim that is indemnifiable under this Section P, and You may not, without GitNotebooks's prior written consent, settle or compromise any claim or consent to the entry of any judgment regarding which indemnification is being sought.
 
-## P. Limitation of Time to File Claims
+## Q. Limitation of Time to File Claims
 
 **Any cause of action or claim You may have arising out of or relating to these Terms of Service must be commenced within one (1) year after the cause of action accrues; otherwise, such cause of action or claim is permanently barred.**
 
-## Q. Changes to These Terms
+## R. Changes to These Terms
 
 We reserve the right, at our sole discretion, to amend these Terms of Service at any time and will update these Terms of Service in the event of any such amendments. We will notify our users of material changes to this Agreement, such as price increases, at least 30 days prior to the change taking effect by posting a notice on our Website or sending email to the primary email address specified in Your GitNotebooks account. Customer's continued use of the Service after those 30 days constitutes agreement to those revisions of this Agreement. For any other modifications, Your continued use of the Website or Service constitutes agreement to our revisions of these Terms of Service.
 
 We reserve the right at any time and from time to time to modify or discontinue, temporarily or permanently, the Website (or any part of it) with or without notice.
 
-## R. Miscellaneous
+## S. Miscellaneous
 
 ### 1. Governing Law
 
@@ -296,7 +324,7 @@ All disputes arising under or relating to this Agreement shall be resolved exclu
 
 ### 7. Amendments; Complete Agreement
 
-This Agreement may only be modified by a written amendment signed by an authorized representative of GitNotebooks, or by the posting by GitNotebooks of a revised version in accordance with Section Q. Changes to These Terms. This Agreement including these Terms of Service and the GitNotebooks Privacy Policy, represent the complete and exclusive statement of the agreement between You and GitNotebooks. This Agreement supersedes any proposal or prior agreement oral or written, and any other communications between You and GitNotebooks relating to the subject matter of these terms including any confidentiality or nondisclosure agreements.
+This Agreement may only be modified by a written amendment signed by an authorized representative of GitNotebooks, or by the posting by GitNotebooks of a revised version in accordance with Section R. Changes to These Terms. This Agreement including these Terms of Service and the GitNotebooks Privacy Policy, represent the complete and exclusive statement of the agreement between You and GitNotebooks. This Agreement supersedes any proposal or prior agreement oral or written, and any other communications between You and GitNotebooks relating to the subject matter of these terms including any confidentiality or nondisclosure agreements.
 
 ### 8. Questions
 
