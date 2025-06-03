@@ -160,7 +160,7 @@ The AI Features generate outputs algorithmically and may produce inaccurate or i
 Organizations may disable the AI Features at any time via the Service settings. Disabling applies prospectively and does not affect data already processed in accordance with this Section G.
 
 ### 8. Survival
-The obligations in Sections S.3–S.6 survive any termination of this Agreement to the extent necessary to enforce or give effect to their provisions
+The obligations in Sections G.3–G.6 survive any termination of this Agreement to the extent necessary to enforce or give effect to their provisions
 
 ## H. Copyright Infringement and DMCA Policy
 
