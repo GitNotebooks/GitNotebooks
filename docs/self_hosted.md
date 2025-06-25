@@ -58,11 +58,11 @@ BASE_URL="https://gitnotebooks.yourcompanydomain.com"
 First, navigate to your GitHub Organization > Settings > Developer Settings > GitHub Apps > New GitHub App. If you need help finding this button, the GitHub docs can help: [Registering a GitHub App](https://docs.github.com/en/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/registering-a-github-app)
 Here’s how to fill out the form:
 
-<img alt="register GitNotebooks GitHub App 1" src="images/gh-app-1.png" width="500px" />
-<img alt="register GitNotebooks GitHub App 2" src="images/gh-app-2.png" width="500px" />
-<img alt="register GitNotebooks GitHub App 3" src="images/gh-app-3.png" width="500px" />
-<img alt="register GitNotebooks GitHub App 4" src="images/gh-app-4.png" width="500px" />
-<img alt="register GitNotebooks GitHub App 5" src="images/gh-app-5.png" width="500px" />
+<img alt="register GitNotebooks GitHub App 1" src="./images/gh-app-permissions-checks.png" width="500px" />
+<img alt="register GitNotebooks GitHub App 2" src="./images/gh-app-permissions-contents.png" width="500px" />
+<img alt="register GitNotebooks GitHub App 3" src="./images/gh-app-permissions-prs.png" width="500px" />
+<img alt="register GitNotebooks GitHub App 4" src="./images/gh-app-permissions-email.png" width="500px" />
+<img alt="register GitNotebooks GitHub App 5" src="images/gh-app-hooks.png" width="500px" />
 
 You should now have a GitHub App with the following settings:
 
