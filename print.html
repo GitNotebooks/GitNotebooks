@@ -526,8 +526,9 @@ ENTERPRISE=true
 <ul>
 <li>The container image serves traffic over port 3000, which should be mapped to port 80 on the host.</li>
 <li>A health check endpoint is available at <code>/api/health</code>. This endpoint verifies the web application's connection to the database and confirms that the environment variables are properly set.</li>
+<li>We recommend a resource request of <code>250Mi</code> memory <code>100m</code> CPU. We also recommend not setting CPU and memory limits to allow for increased CPU during redeployments.</li>
 </ul>
-<p>To deploy the container, use your preferred container orchestration platform (e.g., ECS, Kubernetes) and ensure that the necessary port mapping and environment variables are configured.</p>
+<p>To deploy the container, use your preferred container orchestration platform (e.g., ECS, Kubernetes) and ensure that the necessary port mapping, environment variables, and CPU/memory requests are configured.</p>
 <h2 id="security-recommendations"><a class="header" href="#security-recommendations">Security Recommendations</a></h2>
 <p>While GitNotebooks Self-Hosted only makes network requests to GitHub, we recommend implementing the following security measures:</p>
 <ol>
@@ -686,8 +687,9 @@ ENTERPRISE=true
 <ul>
 <li>The container image serves traffic over port 3000, which should be mapped to port 80 on the host.</li>
 <li>A health check endpoint is available at <code>/api/health</code>. This endpoint verifies the web application's connection to the database and confirms that the environment variables are properly set.</li>
+<li>We recommend a resource request of <code>250Mi</code> memory <code>100m</code> CPU. We also recommend not setting CPU and memory limits to allow for increased CPU during redeployments.</li>
 </ul>
-<p>To deploy the container, use your preferred container orchestration platform (e.g., ECS, Kubernetes) and ensure that the necessary port mapping and environment variables are configured.</p>
+<p>To deploy the container, use your preferred container orchestration platform (e.g., ECS, Kubernetes) and ensure that the necessary port mapping, environment variables, and CPU/memory requests are configured.</p>
 <h2 id="security-recommendations"><a class="header" href="#security-recommendations">Security Recommendations</a></h2>
 <p>While GitNotebooks Self-Hosted only makes network requests to GitHub, we recommend implementing the following security measures:</p>
 <ol>
