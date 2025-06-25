@@ -168,8 +168,9 @@ The final step is to deploy the GitNotebooks container image with the environmen
 
 - The container image serves traffic over port 3000, which should be mapped to port 80 on the host.
 - A health check endpoint is available at `/api/health`. This endpoint verifies the web application's connection to the database and confirms that the environment variables are properly set.
+- We recommend a resource request of `250Mi` memory `100m` CPU. We also recommend not setting CPU and memory limits to allow for increased CPU during redeployments.
 
-To deploy the container, use your preferred container orchestration platform (e.g., ECS, Kubernetes) and ensure that the necessary port mapping and environment variables are configured.
+To deploy the container, use your preferred container orchestration platform (e.g., ECS, Kubernetes) and ensure that the necessary port mapping, environment variables, and CPU/memory requests are configured.
 
 ## Security Recommendations { #security-recommendations }
 
