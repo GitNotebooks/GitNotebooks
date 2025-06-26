@@ -2,6 +2,17 @@
 
 ---
 
+## gitnotebooks/self-hosted:1.3.0
+
+- **Features**
+  - Added a file tree view to quickly hop from file to file
+    ![Screenshot of the file tree view](./images/file-tree.png)
+  - Added a threads list to the right panel so that you can quickly see all of the added comments in the pull request and navigate to them quickly ![Screenshot of a list of threads](./images/threads.png)
+  - The old dashboard has been replaced with a pull request inbox. From the inbox you can see all of the pull request that you care about, and customize which PRs are shown.
+  - Added keyboard shortcuts to jump between files and diffs
+
+---
+
 ## gitnotebooks/self-hosted:1.2.4
 
 - **Bug Fixes**

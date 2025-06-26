@@ -73,6 +73,7 @@ You should now have a GitHub App with the following settings:
 - Webhook URL: `https://gitnotebooks.your-domain.com/api/event_handler`
 - Webhook secret: A custom webhook seceret
 - Permissions
+  - Checks: `Read only`
   - Contents: `Read and write`
   - Pull requests: `Read and write`
   - Email address: `Read only`
@@ -127,6 +128,11 @@ Note the connection string, which is the `DATABASE_URL`
 ```bash
 DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
 ```
+
+## GitHub Enterprise Server Considerations
+
+User avatars may not be visible for GitHub Enterprise Server users due to a limitation of GitHub: [GitHub Issue](https://github.com/orgs/community/discussions/135891).
+However, you can use initial instead of avatars by setting the `USE_INITIALS_FOR_AVATARS=true` environment variable.
 
 ## Reviewing the Environment Variables { #reviewing-environment-variables }
 
