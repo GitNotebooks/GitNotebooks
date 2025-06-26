@@ -231,6 +231,7 @@ Here’s how to fill out the form:</p>
 <li>Webhook secret: A custom webhook seceret</li>
 <li>Permissions
 <ul>
+<li>Checks: <code>Read only</code></li>
 <li>Contents: <code>Read and write</code></li>
 <li>Pull requests: <code>Read and write</code></li>
 <li>Email address: <code>Read only</code></li>
@@ -272,6 +273,9 @@ We will download the key, then convert it to base64.</p>
 <p>Note the connection string, which is the <code>DATABASE_URL</code></p>
 <pre><code class="language-bash">DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
 </code></pre>
+<h2 id="github-enterprise-server-considerations"><a class="header" href="#github-enterprise-server-considerations">GitHub Enterprise Server Considerations</a></h2>
+<p>User avatars may not be visible for GitHub Enterprise Server users due to a limitation of GitHub: <a href="https://github.com/orgs/community/discussions/135891">GitHub Issue</a>.
+However, you can use initial instead of avatars by setting the <code>USE_INITIALS_FOR_AVATARS=true</code> environment variable.</p>
 <h2 id="reviewing-environment-variables"><a class="header" href="#reviewing-environment-variables">Reviewing the Environment Variables</a></h2>
 <p>We should have all the environment variables we need:</p>
 <pre><code class="language-bash"># From `Choosing and Endpoint`
