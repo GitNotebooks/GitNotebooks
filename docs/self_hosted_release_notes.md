@@ -2,6 +2,13 @@
 
 ---
 
+## gitnotebooks/self-hosted:1.3.1
+
+- **Bug Fixes**
+  - Fixed a regression where a user would see "An error has occurred" when the user's auth token had expired. Now you will be redirected to the sign in page to refresh the token.
+
+---
+
 ## gitnotebooks/self-hosted:1.3.0
 
 - **Features**
